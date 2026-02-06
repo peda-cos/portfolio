@@ -24,11 +24,15 @@ export interface Translation {
     subtitle: string;
     cta: string;
     viewProjects: string;
+    downloadCV: string;
   };
   about: {
     heading: string;
     p1: string;
     p2: string;
+    statsYears: string;
+    statsProjects: string;
+    statsTechnologies: string;
   };
   skills: {
     heading: string;
@@ -66,6 +70,7 @@ export interface Translation {
     email: string;
     linkedin: string;
     github: string;
+    downloadCV: string;
     opensInNewTab: string;
   };
   footer: {
@@ -100,11 +105,15 @@ export const translations: Record<Locale, Translation> = {
       subtitle: 'Full Stack Developer | Software Engineer | Systems Analyst',
       cta: 'Get in touch',
       viewProjects: 'View my projects',
+      downloadCV: 'Download CV',
     },
     about: {
       heading: 'About Me',
       p1: 'Full Stack Developer with hands-on experience building scalable web applications using Angular, Java, Go, and Node.js. Currently a Junior Developer at Máquinas Furlan, working across the entire development lifecycle from conception to deployment.',
       p2: 'Pursuing Software Engineering at 42 São Paulo, with a strong foundation in data structures, algorithms, and distributed systems design. Proven ability to learn new technologies quickly and deliver value in multidisciplinary environments using agile methodologies, CI/CD, and containerization with Docker.',
+      statsYears: 'Years of Experience',
+      statsProjects: '42 Projects Completed',
+      statsTechnologies: 'Technologies',
     },
     skills: {
       heading: 'Skills',
@@ -144,6 +153,7 @@ export const translations: Record<Locale, Translation> = {
       email: 'Send an email',
       linkedin: 'Connect on LinkedIn',
       github: 'View GitHub profile',
+      downloadCV: 'Download CV',
       opensInNewTab: 'Opens in a new tab',
     },
     footer: {
@@ -176,11 +186,15 @@ export const translations: Record<Locale, Translation> = {
       subtitle: 'Desenvolvedor Full Stack | Engenheiro de Software | Analista de Sistemas',
       cta: 'Entre em contato',
       viewProjects: 'Ver meus projetos',
+      downloadCV: 'Baixar CV',
     },
     about: {
       heading: 'Sobre Mim',
       p1: 'Desenvolvedor Full Stack com experiência prática na construção de aplicações web escaláveis utilizando Angular, Java, Go e Node.js. Atualmente Desenvolvedor Júnior na Máquinas Furlan, atuando em todo o ciclo de desenvolvimento, da concepção à implantação.',
       p2: 'Cursando Engenharia de Software na 42 São Paulo, com base sólida em estruturas de dados, algoritmos e design de sistemas distribuídos. Capacidade demonstrada de aprender rapidamente novas tecnologias e entregar valor em ambientes multidisciplinares utilizando metodologias ágeis, CI/CD e containerização com Docker.',
+      statsYears: 'Anos de Experiência',
+      statsProjects: 'Projetos 42 Concluídos',
+      statsTechnologies: 'Tecnologias',
     },
     skills: {
       heading: 'Habilidades',
@@ -220,6 +234,7 @@ export const translations: Record<Locale, Translation> = {
       email: 'Enviar um e-mail',
       linkedin: 'Conectar no LinkedIn',
       github: 'Ver perfil no GitHub',
+      downloadCV: 'Baixar CV',
       opensInNewTab: 'Abre em uma nova aba',
     },
     footer: {
