@@ -7,6 +7,7 @@ interface Props {
 
 const { locale } = Astro.props;
 const i = t(locale);
+const cvFile = locale === 'pt' ? '/cv-pt.pdf' : '/cv-en.pdf';
 
 const links = [
   {
@@ -14,18 +15,28 @@ const links = [
     label: i.contact.email,
     icon: 'email',
     external: false,
+    download: false,
   },
   {
     href: 'https://linkedin.com/in/pedrocsmonteiro',
     label: i.contact.linkedin,
     icon: 'linkedin',
     external: true,
+    download: false,
   },
   {
     href: 'https://github.com/peda-cos',
     label: i.contact.github,
     icon: 'github',
     external: true,
+    download: false,
+  },
+  {
+    href: cvFile,
+    label: i.contact.downloadCV,
+    icon: 'download',
+    external: false,
+    download: true,
   },
 ];
 ---
@@ -48,6 +59,7 @@ const links = [
               target: '_blank',
               rel: 'noopener noreferrer',
             } : {})}
+            {...(link.download ? { download: true } : {})}
             aria-label={link.external ? `${link.label} (${i.contact.opensInNewTab})` : link.label}
           >
             <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-primary-container)] dark:bg-[var(--color-dark-primary-container)]" aria-hidden="true">
@@ -70,6 +82,13 @@ const links = [
                   <path d="M9 18c-4.51 2-5-2-7-2"/>
                 </svg>
               )}
+              {link.icon === 'download' && (
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[color:var(--color-on-primary-container)] dark:text-[color:var(--color-dark-on-primary-container)]">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="7 10 12 15 17 10"/>
+                  <line x1="12" x2="12" y1="15" y2="3"/>
+                </svg>
+              )}
             </span>
             <span class="text-[length:var(--font-size-body-lg)] font-medium text-[color:var(--color-on-surface)] dark:text-[color:var(--color-dark-on-surface)]">
               {link.label}
@@ -79,6 +98,13 @@ const links = [
                 <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
                 <polyline points="15 3 21 3 21 9"/>
                 <line x1="10" x2="21" y1="14" y2="3"/>
+              </svg>
+            )}
+            {link.download && (
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-auto shrink-0 text-[color:var(--color-on-surface-variant)] dark:text-[color:var(--color-dark-on-surface-variant)]" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" x2="12" y1="15" y2="3"/>
               </svg>
             )}
           </a>

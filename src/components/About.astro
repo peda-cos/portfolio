@@ -22,5 +22,38 @@ const i = t(locale);
         {i.about.p2}
       </p>
     </div>
+
+    <!-- Stats Bar -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-[var(--spacing-md)] mt-[var(--spacing-2xl)]">
+      <!-- Years of Experience -->
+      <div class="card flex flex-col items-start">
+        <span class="text-[length:var(--font-size-display-sm)] font-bold text-[color:var(--color-primary)] dark:text-[color:var(--color-dark-primary)]">
+          2+
+        </span>
+        <span class="text-[length:var(--font-size-label-lg)] font-medium text-[color:var(--color-on-surface-variant)] dark:text-[color:var(--color-dark-on-surface-variant)]">
+          {i.about.statsYears}
+        </span>
+      </div>
+
+      <!-- Projects Completed -->
+      <div class="card flex flex-col items-start">
+        <span class="text-[length:var(--font-size-display-sm)] font-bold text-[color:var(--color-primary)] dark:text-[color:var(--color-dark-primary)]">
+          21
+        </span>
+        <span class="text-[length:var(--font-size-label-lg)] font-medium text-[color:var(--color-on-surface-variant)] dark:text-[color:var(--color-dark-on-surface-variant)]">
+          {i.about.statsProjects}
+        </span>
+      </div>
+
+      <!-- Technologies -->
+      <div class="card flex flex-col items-start">
+        <span class="text-[length:var(--font-size-display-sm)] font-bold text-[color:var(--color-primary)] dark:text-[color:var(--color-dark-primary)]">
+          20+
+        </span>
+        <span class="text-[length:var(--font-size-label-lg)] font-medium text-[color:var(--color-on-surface-variant)] dark:text-[color:var(--color-dark-on-surface-variant)]">
+          {i.about.statsTechnologies}
+        </span>
+      </div>
+    </div>
   </div>
 </section>
