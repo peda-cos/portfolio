@@ -1,0 +1,116 @@
+---
+import '../styles/global.css';
+import { type Locale, t, getAlternateUrl } from '../i18n/index';
+import { ClientRouter } from 'astro:transitions';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const i = t(locale);
+const alternateLocale = locale === 'en' ? 'pt' : 'en';
+const alternateUrl = getAlternateUrl(locale);
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Pedro Monteiro',
+  url: 'https://pedromonteiro.dev',
+  email: 'pedrocsmonteiro@gmail.com',
+  jobTitle: 'Full Stack Developer',
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Máquinas Furlan Ltda',
+  },
+  alumniOf: [
+    {
+      '@type': 'EducationalOrganization',
+      name: '42 São Paulo',
+    },
+    {
+      '@type': 'EducationalOrganization',
+      name: 'UNINOVE',
+    },
+  ],
+  knowsAbout: [
+    'Angular', 'TypeScript', 'JavaScript', 'Java', 'Spring Boot',
+    'Go', 'Node.js', 'Docker', 'PostgreSQL', 'Git', 'CI/CD',
+  ],
+  sameAs: [
+    'https://linkedin.com/in/pedrocsmonteiro',
+    'https://github.com/peda-cos',
+  ],
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'São Paulo',
+    addressRegion: 'SP',
+    addressCountry: 'BR',
+  },
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: i.meta.title,
+  url: 'https://pedromonteiro.dev',
+  inLanguage: locale === 'pt' ? 'pt-BR' : 'en',
+};
+---
+
+<!DOCTYPE html>
+<html lang={locale === 'pt' ? 'pt-BR' : 'en'} class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={i.meta.description} />
+    <meta name="author" content="Pedro Monteiro" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{i.meta.title}</title>
+
+    <link rel="canonical" href={canonicalUrl.href} />
+    <link rel="alternate" hreflang={alternateLocale} href={new URL(alternateUrl, Astro.site).href} />
+    <link rel="alternate" hreflang={locale} href={canonicalUrl.href} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={i.meta.title} />
+    <meta property="og:description" content={i.meta.description} />
+    <meta property="og:url" content={canonicalUrl.href} />
+    <meta property="og:site_name" content="Pedro Monteiro" />
+    <meta property="og:locale" content={locale === 'pt' ? 'pt_BR' : 'en_US'} />
+    <meta property="og:locale:alternate" content={locale === 'pt' ? 'en_US' : 'pt_BR'} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={i.meta.title} />
+    <meta name="twitter:description" content={i.meta.description} />
+
+    <!-- Theme handling (inline to prevent FOUC) -->
+    <script is:inline>
+      (function() {
+        const theme = localStorage.getItem('theme');
+        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+
+    <ClientRouter />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">
+      {i.nav.skipToContent}
+    </a>
+
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,60 @@
+---
+import { type Locale, t } from '../i18n/index';
+import { experience, formatDate } from '../data/experience';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const i = t(locale);
+---
+
+<section id="experience" class="section section-alt" aria-labelledby="experience-heading">
+  <div class="container max-w-[48rem]">
+    <h2 id="experience-heading" class="text-[length:var(--font-size-headline-lg)] font-bold text-[color:var(--color-on-surface)] dark:text-[color:var(--color-dark-on-surface)]">
+      {i.experience.heading}
+    </h2>
+    <div class="mt-[var(--spacing-2xl)] space-y-[var(--spacing-2xl)]">
+      {experience.map((entry) => (
+        <article class="card">
+          <div class="flex flex-col gap-[var(--spacing-xs)] sm:flex-row sm:items-baseline sm:justify-between">
+            <div>
+              <h3 class="text-[length:var(--font-size-title-lg)] font-semibold text-[color:var(--color-on-surface)] dark:text-[color:var(--color-dark-on-surface)]">
+                {entry.role[locale]}
+              </h3>
+              <p class="text-[length:var(--font-size-body-md)] font-medium text-[color:var(--color-primary)] dark:text-[color:var(--color-dark-primary)]">
+                {entry.company[locale]}
+              </p>
+            </div>
+            <p class="text-[length:var(--font-size-body-sm)] text-[color:var(--color-on-surface-variant)] dark:text-[color:var(--color-dark-on-surface-variant)] sm:text-right">
+              <time datetime={entry.startDate}>{formatDate(entry.startDate, locale)}</time>
+              {' — '}
+              {entry.endDate ? (
+                <span>{entry.endDate[locale]}</span>
+              ) : (
+                <span class="chip-accent chip align-middle">{i.experience.present}</span>
+              )}
+            </p>
+          </div>
+
+          <p class="mt-[var(--spacing-md)] text-[length:var(--font-size-body-md)] leading-relaxed text-[color:var(--color-on-surface-variant)] dark:text-[color:var(--color-dark-on-surface-variant)]">
+            {entry.description[locale]}
+          </p>
+
+          <ul class="mt-[var(--spacing-md)] list-inside list-disc space-y-[var(--spacing-xs)] text-[length:var(--font-size-body-sm)] text-[color:var(--color-on-surface-variant)] dark:text-[color:var(--color-dark-on-surface-variant)]" role="list">
+            {entry.achievements[locale].map((achievement) => (
+              <li>{achievement}</li>
+            ))}
+          </ul>
+
+          <ul role="list" class="mt-[var(--spacing-md)] flex flex-wrap gap-[var(--spacing-xs)]" style="list-style: none; padding: 0;">
+            {entry.technologies.map((tech) => (
+              <li><span class="chip">{tech}</span></li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
