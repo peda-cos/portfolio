@@ -7,7 +7,7 @@ interface Props {
 
 const { locale } = Astro.props;
 const i = t(locale);
-const cvFile = locale === 'pt' ? '/cv-pt.pdf' : '/cv-en.pdf';
+const cvUrl = `/${locale}/cv/`;
 
 const links = [
   {
@@ -32,11 +32,11 @@ const links = [
     download: false,
   },
   {
-    href: cvFile,
+    href: cvUrl,
     label: i.contact.downloadCV,
     icon: 'download',
-    external: false,
-    download: true,
+    external: true,
+    download: false,
   },
 ];
 ---

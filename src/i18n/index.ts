@@ -40,9 +40,14 @@ export interface Translation {
     backend: string;
     cloud: string;
     database: string;
-    architecture: string;
-    fundamentals: string;
-    methodologies: string;
+    algorithmsAi: string;
+    graphics: string;
+    groupInterpersonal: string;
+    imperativeProgramming: string;
+    oop: string;
+    systemProgramming: string;
+    networkSysadmin: string;
+    web: string;
   };
   experience: {
     heading: string;
@@ -73,6 +78,16 @@ export interface Translation {
     downloadCV: string;
     opensInNewTab: string;
   };
+  cv: {
+    title: string;
+    saveAsPdf: string;
+    backToSite: string;
+    summary: string;
+    technicalSkills: string;
+    location: string;
+    phone: string;
+    projects42: string;
+  };
   footer: {
     builtWith: string;
     rights: string;
@@ -84,7 +99,7 @@ export const translations: Record<Locale, Translation> = {
     meta: {
       title: 'Pedro Monteiro - Full Stack Developer',
       description:
-        'Full Stack Developer with experience in Angular, Java, Go, and scalable architectures. Software Engineering student at 42 São Paulo.',
+        'Full Stack Developer with experience in Angular, Go, Python, and scalable architectures. Software Engineering student at 42 São Paulo.',
     },
     nav: {
       about: 'About',
@@ -109,7 +124,7 @@ export const translations: Record<Locale, Translation> = {
     },
     about: {
       heading: 'About Me',
-      p1: 'Full Stack Developer with hands-on experience building scalable web applications using Angular, Java, Go, and Node.js. Currently a Junior Developer at Máquinas Furlan, working across the entire development lifecycle from conception to deployment.',
+      p1: 'Full Stack Developer with hands-on experience building scalable web applications using Angular, Go, Python, and Node.js. Currently a Junior Developer at Máquinas Furlan, working across the entire development lifecycle from conception to deployment.',
       p2: 'Pursuing Software Engineering at 42 São Paulo, with a strong foundation in data structures, algorithms, and distributed systems design. Proven ability to learn new technologies quickly and deliver value in multidisciplinary environments using agile methodologies, CI/CD, and containerization with Docker.',
       statsYears: 'Years of Experience',
       statsProjects: '42 Projects Completed',
@@ -121,9 +136,14 @@ export const translations: Record<Locale, Translation> = {
       backend: 'Backend',
       cloud: 'Cloud & DevOps',
       database: 'Databases',
-      architecture: 'Architecture',
-      fundamentals: 'Fundamentals',
-      methodologies: 'Methodologies',
+      algorithmsAi: 'Algorithms & AI',
+      graphics: 'Graphics',
+      groupInterpersonal: 'Group & Interpersonal',
+      imperativeProgramming: 'Imperative Programming',
+      oop: 'Object-Oriented Programming',
+      systemProgramming: 'System Programming',
+      networkSysadmin: 'Network & Sysadmin',
+      web: 'Web',
     },
     experience: {
       heading: 'Professional Experience',
@@ -156,6 +176,16 @@ export const translations: Record<Locale, Translation> = {
       downloadCV: 'Download CV',
       opensInNewTab: 'Opens in a new tab',
     },
+    cv: {
+      title: 'Curriculum Vitae - Pedro Monteiro',
+      saveAsPdf: 'Save as PDF',
+      backToSite: 'Back to site',
+      summary: 'Professional Summary',
+      technicalSkills: 'Technical Skills',
+      location: 'São Paulo, SP, Brazil',
+      phone: '+55 (11) 99999-9999',
+      projects42: '42 School Projects',
+    },
     footer: {
       builtWith: 'Built with Astro, Svelte, and TailwindCSS',
       rights: 'All rights reserved.',
@@ -165,7 +195,7 @@ export const translations: Record<Locale, Translation> = {
     meta: {
       title: 'Pedro Monteiro - Desenvolvedor Full Stack',
       description:
-        'Desenvolvedor Full Stack com experiência em Angular, Java, Go e arquiteturas escaláveis. Estudante de Engenharia de Software na 42 São Paulo.',
+        'Desenvolvedor Full Stack com experiência em Angular, Go, Python e arquiteturas escaláveis. Estudante de Engenharia de Software na 42 São Paulo.',
     },
     nav: {
       about: 'Sobre',
@@ -190,7 +220,7 @@ export const translations: Record<Locale, Translation> = {
     },
     about: {
       heading: 'Sobre Mim',
-      p1: 'Desenvolvedor Full Stack com experiência prática na construção de aplicações web escaláveis utilizando Angular, Java, Go e Node.js. Atualmente Desenvolvedor Júnior na Máquinas Furlan, atuando em todo o ciclo de desenvolvimento, da concepção à implantação.',
+      p1: 'Desenvolvedor Full Stack com experiência prática na construção de aplicações web escaláveis utilizando Angular, Go, Python e Node.js. Atualmente Desenvolvedor Júnior na Máquinas Furlan, atuando em todo o ciclo de desenvolvimento, da concepção à implantação.',
       p2: 'Cursando Engenharia de Software na 42 São Paulo, com base sólida em estruturas de dados, algoritmos e design de sistemas distribuídos. Capacidade demonstrada de aprender rapidamente novas tecnologias e entregar valor em ambientes multidisciplinares utilizando metodologias ágeis, CI/CD e containerização com Docker.',
       statsYears: 'Anos de Experiência',
       statsProjects: 'Projetos 42 Concluídos',
@@ -202,9 +232,14 @@ export const translations: Record<Locale, Translation> = {
       backend: 'Backend',
       cloud: 'Cloud & DevOps',
       database: 'Banco de Dados',
-      architecture: 'Arquitetura',
-      fundamentals: 'Fundamentos',
-      methodologies: 'Metodologias',
+      algorithmsAi: 'Algoritmos & IA',
+      graphics: 'Gráficos',
+      groupInterpersonal: 'Grupo & Interpessoal',
+      imperativeProgramming: 'Programação Imperativa',
+      oop: 'Programação Orientada a Objetos',
+      systemProgramming: 'Programação de Sistemas',
+      networkSysadmin: 'Redes & Sysadmin',
+      web: 'Web',
     },
     experience: {
       heading: 'Experiência Profissional',
@@ -236,6 +271,16 @@ export const translations: Record<Locale, Translation> = {
       github: 'Ver perfil no GitHub',
       downloadCV: 'Baixar CV',
       opensInNewTab: 'Abre em uma nova aba',
+    },
+    cv: {
+      title: 'Currículo - Pedro Monteiro',
+      saveAsPdf: 'Salvar como PDF',
+      backToSite: 'Voltar ao site',
+      summary: 'Resumo Profissional',
+      technicalSkills: 'Habilidades Técnicas',
+      location: 'São Paulo, SP, Brasil',
+      phone: '+55 (11) 99999-9999',
+      projects42: 'Projetos 42 School',
     },
     footer: {
       builtWith: 'Feito com Astro, Svelte e TailwindCSS',

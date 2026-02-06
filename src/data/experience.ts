@@ -42,7 +42,7 @@ export const experience: ExperienceEntry[] = [
         'Versionamento colaborativo com Git e práticas de DevOps',
       ],
     },
-    technologies: ['Angular', 'Go', 'Java', 'Node.js', 'Docker', 'Git'],
+    technologies: ['Angular', 'Go', 'Python', 'Node.js', 'Docker', 'Git'],
   },
   {
     company: {

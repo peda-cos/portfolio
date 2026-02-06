@@ -10,7 +10,7 @@ export const skillCategories: SkillCategory[] = [
   },
   {
     key: 'backend',
-    items: ['Java', 'Spring Boot', 'Go', 'Python', 'FastAPI', 'Node.js'],
+    items: ['Go', 'Python', 'FastAPI', 'Node.js', 'RESTful'],
   },
   {
     key: 'cloud',
@@ -21,15 +21,35 @@ export const skillCategories: SkillCategory[] = [
     items: ['PostgreSQL', 'Oracle', 'SQL'],
   },
   {
-    key: 'architecture',
-    items: ['Software Design', 'Distributed Systems', 'Scalability', 'Elasticity'],
+    key: 'algorithmsAi',
+    items: ['Classic Algorithms', 'Data Structures', 'Asynchronous Logic'],
   },
   {
-    key: 'fundamentals',
-    items: ['Data Structures', 'Algorithms', 'OOP', 'Concurrent Programming'],
+    key: 'graphics',
+    items: ['Image Manipulation', 'Drawing Shapes', 'Event-Driven Programming'],
   },
   {
-    key: 'methodologies',
-    items: ['Scrum', 'Kanban', 'Agile Development', 'Multidisciplinary Teams'],
+    key: 'groupInterpersonal',
+    items: ['Teamwork', 'Collaboration', 'Group Dynamics'],
+  },
+  {
+    key: 'imperativeProgramming',
+    items: ['C Programming', 'Memory Management', 'Data Structures'],
+  },
+  {
+    key: 'oop',
+    items: ['C++ Classes', 'Inheritance', 'Templates', 'Abstraction'],
+  },
+  {
+    key: 'systemProgramming',
+    items: ['Unix System Calls', 'File Handling', 'Process Control'],
+  },
+  {
+    key: 'networkSysadmin',
+    items: ['Linux System Setup', 'User Management', 'Basic Network Services'],
+  },
+  {
+    key: 'web',
+    items: ['Full-Stack Development', 'MVC', 'UI/UX Basics'],
   },
 ];

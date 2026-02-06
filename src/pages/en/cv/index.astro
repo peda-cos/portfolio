@@ -1,0 +1,235 @@
+---
+import { t } from '../../../i18n/index';
+import { experience, education, formatDate } from '../../../data/experience';
+import { skillCategories } from '../../../data/skills';
+import { projects } from '../../../data/projects';
+
+const locale = 'en' as const;
+const i = t(locale);
+
+const categoryLabels: Record<string, string> = {
+  frontend: i.skills.frontend,
+  backend: i.skills.backend,
+  cloud: i.skills.cloud,
+  database: i.skills.database,
+  algorithmsAi: i.skills.algorithmsAi,
+  graphics: i.skills.graphics,
+  groupInterpersonal: i.skills.groupInterpersonal,
+  imperativeProgramming: i.skills.imperativeProgramming,
+  oop: i.skills.oop,
+  systemProgramming: i.skills.systemProgramming,
+  networkSysadmin: i.skills.networkSysadmin,
+  web: i.skills.web,
+};
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{i.cv.title}</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <style>
+      /* ATS-optimized: simple, semantic, single-column, no images, standard fonts */
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      body {
+        font-family: 'Georgia', 'Times New Roman', serif;
+        font-size: 11pt;
+        line-height: 1.45;
+        color: #1a1a1a;
+        background: #fff;
+        max-width: 52rem;
+        margin: 0 auto;
+        padding: 2rem 2.5rem;
+      }
+
+      /* Header / Name block */
+      .cv-header { text-align: center; margin-bottom: 1.25rem; border-bottom: 2px solid #2a2a2a; padding-bottom: 1rem; }
+      .cv-name { font-size: 22pt; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; margin-bottom: 0.25rem; }
+      .cv-title { font-size: 12pt; font-weight: 400; color: #333; margin-bottom: 0.5rem; }
+      .cv-contact { font-size: 9.5pt; color: #444; }
+      .cv-contact span { margin: 0 0.4rem; }
+      .cv-contact a { color: #444; text-decoration: none; }
+
+      /* Sections */
+      .cv-section { margin-top: 1.1rem; }
+      .cv-section-title {
+        font-size: 12pt;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        border-bottom: 1px solid #888;
+        padding-bottom: 0.2rem;
+        margin-bottom: 0.6rem;
+        color: #1a1a1a;
+      }
+
+      /* Experience & Education entries */
+      .cv-entry { margin-bottom: 0.8rem; }
+      .cv-entry-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; }
+      .cv-entry-role { font-weight: 700; font-size: 11pt; }
+      .cv-entry-date { font-size: 10pt; color: #444; font-style: italic; white-space: nowrap; }
+      .cv-entry-org { font-size: 10.5pt; color: #333; margin-bottom: 0.2rem; }
+      .cv-entry-desc { font-size: 10.5pt; color: #333; margin-bottom: 0.25rem; }
+
+      /* Lists */
+      .cv-list { padding-left: 1.2rem; margin-top: 0.2rem; }
+      .cv-list li { font-size: 10.5pt; margin-bottom: 0.15rem; color: #222; }
+
+      /* Skills - inline for ATS readability */
+      .cv-skills-group { margin-bottom: 0.4rem; }
+      .cv-skills-label { font-weight: 700; font-size: 10.5pt; }
+      .cv-skills-items { font-size: 10.5pt; color: #333; }
+
+      /* Projects */
+      .cv-project { margin-bottom: 0.3rem; }
+      .cv-project-name { font-weight: 700; font-size: 10.5pt; }
+      .cv-project-meta { font-size: 10pt; color: #555; }
+      .cv-project-desc { font-size: 10pt; color: #333; }
+
+      /* Action bar - hidden on print */
+      .cv-actions {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        padding: 0.75rem 1rem;
+        background: #f5f5f0;
+        border-bottom: 1px solid #ddd;
+        z-index: 100;
+      }
+      .cv-actions a,
+      .cv-actions button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.5rem 1.25rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+        font-family: system-ui, sans-serif;
+        border-radius: 0.5rem;
+        border: 1px solid #ccc;
+        background: #fff;
+        color: #333;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background 0.15s;
+      }
+      .cv-actions button { background: #3D4A2A; color: #fff; border-color: #3D4A2A; }
+      .cv-actions a:hover { background: #eee; }
+      .cv-actions button:hover { background: #4a5a35; }
+
+      /* Offset body for fixed bar */
+      body { padding-top: 4.5rem; }
+
+      /* Print styles */
+      @media print {
+        body { padding: 0; font-size: 10.5pt; max-width: none; }
+        .cv-actions { display: none !important; }
+        .cv-header { border-bottom-width: 1.5pt; }
+        .cv-section-title { border-bottom-width: 0.5pt; }
+        @page { margin: 1.5cm 1.8cm; }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Action bar (hidden on print) -->
+    <div class="cv-actions">
+      <a href="/en/">{i.cv.backToSite}</a>
+      <button onclick="window.print()" type="button">{i.cv.saveAsPdf}</button>
+    </div>
+
+    <!-- CV Content -->
+    <header class="cv-header">
+      <div class="cv-name">Pedro Monteiro</div>
+      <div class="cv-title">{i.hero.subtitle}</div>
+      <div class="cv-contact">
+        <span>pedrocsmonteiro@gmail.com</span>
+        <span>|</span>
+        <span>{i.cv.location}</span>
+        <span>|</span>
+        <a href="https://linkedin.com/in/pedrocsmonteiro">linkedin.com/in/pedrocsmonteiro</a>
+        <span>|</span>
+        <a href="https://github.com/peda-cos">github.com/peda-cos</a>
+      </div>
+    </header>
+
+    <!-- Professional Summary -->
+    <section class="cv-section">
+      <h2 class="cv-section-title">{i.cv.summary}</h2>
+      <p class="cv-entry-desc">{i.about.p1}</p>
+      <p class="cv-entry-desc" style="margin-top: 0.3rem;">{i.about.p2}</p>
+    </section>
+
+    <!-- Experience -->
+    <section class="cv-section">
+      <h2 class="cv-section-title">{i.experience.heading}</h2>
+      {experience.map((exp) => (
+        <div class="cv-entry">
+          <div class="cv-entry-header">
+            <span class="cv-entry-role">{exp.role[locale]}</span>
+            <span class="cv-entry-date">
+              {formatDate(exp.startDate, locale)} &ndash; {exp.endDate ? exp.endDate[locale] : i.experience.present}
+            </span>
+          </div>
+          <div class="cv-entry-org">{exp.company[locale]}</div>
+          <ul class="cv-list">
+            {exp.achievements[locale].map((achievement) => (
+              <li>{achievement}</li>
+            ))}
+          </ul>
+          <div class="cv-entry-desc" style="margin-top: 0.2rem; font-size: 9.5pt; color: #555;">
+            Technologies: {exp.technologies.join(', ')}
+          </div>
+        </div>
+      ))}
+    </section>
+
+    <!-- Education -->
+    <section class="cv-section">
+      <h2 class="cv-section-title">{i.education.heading}</h2>
+      {education.map((edu) => (
+        <div class="cv-entry">
+          <div class="cv-entry-header">
+            <span class="cv-entry-role">{edu.degree[locale]}</span>
+            <span class="cv-entry-date">
+              {formatDate(edu.startDate, locale)} &ndash; {edu.endDate ? formatDate(edu.endDate, locale) : i.education.inProgress}
+            </span>
+          </div>
+          <div class="cv-entry-org">{edu.institution[locale]}</div>
+          <p class="cv-entry-desc">{edu.description[locale]}</p>
+        </div>
+      ))}
+    </section>
+
+    <!-- Technical Skills -->
+    <section class="cv-section">
+      <h2 class="cv-section-title">{i.cv.technicalSkills}</h2>
+      {skillCategories.map((category) => (
+        <div class="cv-skills-group">
+          <span class="cv-skills-label">{categoryLabels[category.key]}:</span>{' '}
+          <span class="cv-skills-items">{category.items.join(', ')}</span>
+        </div>
+      ))}
+    </section>
+
+    <!-- 42 Projects -->
+    <section class="cv-section">
+      <h2 class="cv-section-title">{i.cv.projects42}</h2>
+      {projects.map((project) => (
+        <div class="cv-project">
+          <span class="cv-project-name">{project.name[locale]}</span>
+          <span class="cv-project-meta">
+            {' '}&mdash; Grade: {project.grade}/100{project.isBonus ? ' (Bonus)' : ''}
+          </span>
+          <span class="cv-project-desc"> &mdash; {project.description[locale]}</span>
+        </div>
+      ))}
+    </section>
+  </body>
+</html>

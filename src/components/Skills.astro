@@ -14,9 +14,14 @@ const categoryLabels: Record<string, string> = {
   backend: i.skills.backend,
   cloud: i.skills.cloud,
   database: i.skills.database,
-  architecture: i.skills.architecture,
-  fundamentals: i.skills.fundamentals,
-  methodologies: i.skills.methodologies,
+  algorithmsAi: i.skills.algorithmsAi,
+  graphics: i.skills.graphics,
+  groupInterpersonal: i.skills.groupInterpersonal,
+  imperativeProgramming: i.skills.imperativeProgramming,
+  oop: i.skills.oop,
+  systemProgramming: i.skills.systemProgramming,
+  networkSysadmin: i.skills.networkSysadmin,
+  web: i.skills.web,
 };
 ---
 
@@ -27,7 +32,7 @@ const categoryLabels: Record<string, string> = {
     </h2>
     <div class="mt-[var(--spacing-2xl)] grid gap-[var(--spacing-lg)] sm:grid-cols-2 lg:grid-cols-3">
       {skillCategories.map((category) => (
-        <div class="card sm:last:col-span-2 sm:last:justify-self-center sm:last:max-w-[calc(50%-var(--spacing-lg)/2)] lg:last:col-span-1 lg:last:col-start-2 lg:last:max-w-none">
+        <div class="card">
           <h3 class="text-[length:var(--font-size-title-md)] font-semibold text-[color:var(--color-primary)] dark:text-[color:var(--color-dark-primary)]">
             {categoryLabels[category.key]}
           </h3>
