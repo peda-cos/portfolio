@@ -1,39 +1,118 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Header from '../../components/Header.astro';
-import Hero from '../../components/Hero.astro';
-import About from '../../components/About.astro';
-import Skills from '../../components/Skills.astro';
-import Experience from '../../components/Experience.astro';
-import Education from '../../components/Education.astro';
-import Projects from '../../components/Projects.astro';
-import Contact from '../../components/Contact.astro';
-import Footer from '../../components/Footer.astro';
-import ScrollReveal from '../../components/svelte/ScrollReveal.svelte';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LanguageSwitcher from '../../components/LanguageSwitcher.svelte';
+import { useTranslations } from '../../i18n/utils';
+import type { Locale } from '../../i18n/translations';
 
-const locale = 'en' as const;
+const lang: Locale = 'en';
+const t = useTranslations(lang);
+const { header, summary, skills, experience, education, footer, a11y } = t;
 ---
 
-<Layout locale={locale}>
-  <Header locale={locale} />
-  <main id="main-content">
-    <Hero locale={locale} />
-    <ScrollReveal client:visible>
-      <About locale={locale} />
-    </ScrollReveal>
-    <ScrollReveal client:visible>
-      <Skills locale={locale} />
-    </ScrollReveal>
-    <ScrollReveal client:visible>
-      <Experience locale={locale} />
-    </ScrollReveal>
-    <ScrollReveal client:visible>
-      <Education locale={locale} />
-    </ScrollReveal>
-    <Projects locale={locale} />
-    <ScrollReveal client:visible>
-      <Contact locale={locale} />
-    </ScrollReveal>
-  </main>
-  <Footer locale={locale} />
-</Layout>
+<BaseLayout lang={lang}>
+  <a href="#main-content" class="skip-link">{a11y.skipToContent}</a>
+  <div class="page">
+    <header class="site-header">
+      <div class="header-top">
+        <div class="header-identity">
+          <h1>{header.name}</h1>
+          <div class="role">{header.role}</div>
+        </div>
+        <LanguageSwitcher currentLang={lang} alternatePath="/" />
+      </div>
+
+      <div class="header-contact">
+        <a href={`mailto:${header.email}`}>{header.email}</a>
+        <span class="separator" aria-hidden="true">&middot;</span>
+        <a href={`https://${header.linkedin}`} target="_blank" rel="noopener noreferrer">LinkedIn<span class="sr-only"> {a11y.opensInNewTab}</span></a>
+        <span class="separator" aria-hidden="true">&middot;</span>
+        <a href={`https://${header.github}`} target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only"> {a11y.opensInNewTab}</span></a>
+        <span class="separator" aria-hidden="true">&middot;</span>
+        <span class="location">{header.location}</span>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section id="summary" class="summary" aria-labelledby="summary-heading">
+        <h2 id="summary-heading">{summary.heading}</h2>
+        <p>{summary.content}</p>
+      </section>
+
+      <section id="skills" aria-labelledby="skills-heading">
+        <h2 id="skills-heading">{skills.heading}</h2>
+        <div class="skills-grid">
+          {skills.categories.map((category) => (
+            <div class="skills-category">
+              <h3>{category.name}</h3>
+              <ul class="skills-list">
+                {category.items.map((item) => (
+                  <li class="skill-tag">{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="experience" aria-labelledby="experience-heading">
+        <h2 id="experience-heading">{experience.heading}</h2>
+        {experience.positions.map((job) => (
+          <article class="entry">
+            <div class="entry-header">
+              <div class="entry-meta">
+                <h3>{job.company}</h3>
+              </div>
+              <span class="period">{job.period}</span>
+            </div>
+            <div class="entry-role">{job.role}</div>
+            <p class="entry-summary">{job.summary}</p>
+            <ul class="entry-highlights">
+              {job.highlights.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </section>
+
+      <section id="education" aria-labelledby="education-heading">
+        <h2 id="education-heading">{education.heading}</h2>
+        {education.institutions.map((school) => (
+          <article class="entry">
+            <div class="entry-header">
+              <div class="entry-meta">
+                <h3>{school.name}</h3>
+              </div>
+              <span class="period">{school.period}</span>
+            </div>
+            <div class="degree">{school.degree}</div>
+            <p>{school.description}</p>
+
+            {'projects' in school && school.projects && (
+              <dl class="project-list">
+                {school.projects.map((project) => (
+                  <div class="project-item">
+                    <dt class="project-name">{project.name}</dt>
+                    <dd class="project-desc">{project.description}</dd>
+                  </div>
+                ))}
+              </dl>
+            )}
+
+            {'skillsDeveloped' in school && school.skillsDeveloped && (
+              <p class="skills-developed">
+                <strong>Skills:</strong> {school.skillsDeveloped}
+              </p>
+            )}
+          </article>
+        ))}
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>
+        {footer.builtWith} <a href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro<span class="sr-only"> {a11y.opensInNewTab}</span></a> {footer.and} <a href="https://svelte.dev" target="_blank" rel="noopener noreferrer">Svelte<span class="sr-only"> {a11y.opensInNewTab}</span></a>
+      </p>
+    </footer>
+  </div>
+</BaseLayout>
