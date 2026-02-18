@@ -8,7 +8,7 @@ export type Locale = keyof typeof languages;
 export const translations = {
   'pt-br': {
     meta: {
-      title: 'Pedro Monteiro — Engenheiro Full-Stack',
+      title: 'Pedro Monteiro - Engenheiro Full-Stack',
       description:
         'Engenheiro full stack com experiência em todo o ciclo de vida de aplicações, da arquitetura ao deploy. Background em programação de sistemas (C/C++), desenvolvimento web (Angular, Go, Node.js, TypeScript, React, Python/Django) e tooling de DevOps (Docker, CI/CD, PostgreSQL).',
     },
@@ -188,7 +188,7 @@ export const translations = {
   },
   en: {
     meta: {
-      title: 'Pedro Monteiro — Full-Stack Engineer',
+      title: 'Pedro Monteiro - Full-Stack Engineer',
       description:
         'Full stack engineer with experience across the entire application lifecycle, from architecture to deployment. Background in systems programming (C/C++), web development (Angular, Go, Node.js, TypeScript, React, Python/Django), and DevOps tooling (Docker, CI/CD, PostgreSQL).',
     },
