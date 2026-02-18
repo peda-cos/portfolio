@@ -4,7 +4,8 @@ import svelte from '@astrojs/svelte';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://pedromonteiro.dev',
+  site: 'https://peda-cos.github.io',
+  base: '/portfolio',
   integrations: [svelte(), sitemap()],
   build: {
     inlineStylesheets: 'always',
