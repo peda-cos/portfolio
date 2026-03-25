@@ -148,3 +148,37 @@ TypeScript enforces structural consistency between locales — if a field is add
 ## Environment Variables
 
 None. The project reads no environment variables. The `site` URL is configured in `astro.config.mjs` and `BaseLayout.astro` — update it to match your GitHub Pages URL before deploying.
+
+## Performance Notes
+
+### Build Output Sizes
+
+| Asset | Size |
+|-------|------|
+| `dist/index.html` (PT) | ~27.9 KB |
+| `dist/en/index.html` (EN) | ~27.5 KB |
+| Inline CSS (per page) | ~14.9 KB |
+| `client.svelte.*.js` | ~22.4 KB (9.1 KB gzip) |
+| `dm-sans-latin.woff2` | ~39.7 KB |
+| `source-serif-4-latin.woff2` | ~78.5 KB |
+| Total `dist/` | ~268 KB |
+
+### Font Loading Strategy
+
+The site uses 4 self-hosted font files (2 families × 2 subsets each):
+
+| Font | Subset | Loaded via |
+|------|--------|------------|
+| DM Sans — latin | `@font-face` + `<link rel="preload">` | Network request |
+| DM Sans — latin-ext | `@font-face` (Vite-inlined as base64 data URI) | Already in CSS |
+| Source Serif 4 — latin | `@font-face` + `<link rel="preload">` | Network request |
+| Source Serif 4 — latin-ext | `@font-face` (Vite-inlined as base64 data URI) | Already in CSS |
+
+- **`font-display: optional`** — prevents layout shift (FOUT/FOIT). With preload hints, the latin subsets arrive fast enough to render with custom fonts on most connections. If they don't arrive in time, the browser uses the system fallback and does not swap mid-render.
+- **`unicode-range` subsetting** — latin and latin-ext `@font-face` rules have non-overlapping ranges. The browser only downloads the latin-ext subset if the page contains characters outside the basic Latin range (e.g., accented Portuguese characters like ã, ç, é). The small overlap on combining marks (U+0304, U+0308, U+0329) is standard practice from Google Fonts.
+- **Latin-ext files are Vite-inlined** — because the woff2 files are small, Vite inlines them as base64 data URIs in the CSS during build. This means they're part of the inline stylesheet and require no additional network requests.
+- **Only latin subsets are preloaded** — the latin-ext data URIs are already embedded in CSS, so preloading them would be redundant.
+
+### CSS
+
+All CSS is inlined into HTML (`build.inlineStylesheets: 'always'`), eliminating render-blocking CSS requests. Zero unused class selectors exist in `global.css` — all 30 class selectors have matching template references.
