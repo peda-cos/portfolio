@@ -40,6 +40,12 @@ const jsonLd = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--
+      CSP: 'unsafe-inline' is required for style-src (Astro inlines all CSS)
+      and script-src (JSON-LD uses is:inline). font-src includes data: for
+      Vite-inlined latin-ext woff2 base64 data URIs.
+    -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; font-src 'self' data:; img-src 'self' data:; script-src 'self' 'unsafe-inline'; connect-src 'self'" />
     <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
     <meta name="generator" content={Astro.generator} />
     
