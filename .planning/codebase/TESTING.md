@@ -4,52 +4,67 @@
 
 ## Test Setup
 
-- **Framework:** None installed.
-- **Runner:** None configured.
-- **Config:** No `vitest.config.*`, `jest.config.*`, `playwright.config.*`, or `cypress.config.*` found.
+- **Unit test framework:** Vitest (integrated with Astro's Vite pipeline via `getViteConfig`)
+- **E2E test framework:** Playwright (Chromium only)
+- **Config files:** `vitest.config.ts`, `playwright.config.ts`
 
 ## Test Types Present
 
-- [ ] Unit tests
+- [x] Unit tests — Vitest, `src/**/*.test.ts`
 - [ ] Integration tests
-- [ ] E2E tests
+- [x] E2E tests — Playwright, `e2e/*.spec.ts`
 - [ ] Visual regression
-- [x] Type checking — via `@astrojs/check` (dev dependency) and `typescript ^5.9.3`. TypeScript strict mode is enforced through `tsconfig.json` extending `astro/tsconfigs/strict`.
+- [x] Type checking — `@astrojs/check` + TypeScript strict mode
 
 ## Coverage
 
-- **Reporting:** Not configured.
-- **Thresholds:** Not configured.
+- **Reporting:** Not configured (add `coverage` to vitest.config.ts if needed)
+- **Thresholds:** Not configured
 
 ## Key Test Locations
 
 | Path | What It Tests |
 |------|---------------|
-| *(none)* | No test files exist in the project |
+| `src/i18n/utils.test.ts` | `getLangFromUrl`, `getAlternateUrl`, `getHtmlLang`, `getBase`, `useTranslations` — all exported i18n utility functions |
+| `src/i18n/translations.test.ts` | Translation structure parity between locales, no undefined values, languages map integrity |
+| `e2e/smoke.spec.ts` | Both language routes render correctly, language switcher navigation, skip-link accessibility, HTTP 200 responses |
 
 ## How to Run Tests
 
 ```bash
-# Type checking (only available quality gate)
-npx astro check
+# Unit tests (single run)
+npm test
 
-# No unit, integration, or E2E test commands exist
-# No test script defined in package.json
+# Unit tests (watch mode)
+npm run test:watch
+
+# E2E tests (requires build first)
+npm run build && npm run test:e2e
+
+# Type checking
+npm run check
+
+# All quality gates
+npm run build && npm run check && npm test && npm run test:e2e
 ```
 
-## Gaps / Missing Coverage
+## CI Pipeline
 
-- **All source code is untested.** No unit tests for `src/i18n/utils.ts` (language detection logic `getLangFromUrl`, `getAlternateUrl`, `getHtmlLang`).
-- **No unit tests for translation data** in `src/i18n/translations.ts` — structural correctness of the translation objects (e.g., both locales having identical keys) is not verified automatically.
-- **No component tests** for `src/components/LanguageSwitcher.svelte` — prop handling and rendered output are not tested.
-- **No E2E tests** — language switching behavior, page navigation, and i18n routing (`/` vs `/en/`) are not automatically verified.
-- **No visual regression tests** — layout correctness and CSS rendering are not protected against regressions.
-- **CI pipeline does not run tests** — `.github/workflows/deploy.yml` only runs `npm run build`. A failing build is the only automated quality gate.
+- **CI workflow** (`.github/workflows/ci.yml`): Runs on every push and PR to `main`. Executes type check → unit tests → build → E2E tests.
+- **Deploy workflow** (`.github/workflows/deploy.yml`): Triggers after CI passes on `main` via `workflow_run`. Only deploys if CI succeeded. Manual dispatch also available.
+
+## Conventions for Future Tests
+
+- **Unit test files:** Co-locate with source: `src/module/file.test.ts` next to `src/module/file.ts`
+- **E2E test files:** Place in `e2e/` directory with `.spec.ts` extension
+- **Test structure:** Use `describe` blocks grouped by function/feature name, `test` blocks for individual behaviors
+- **Naming:** `describe('functionName', () => { test('does X when Y', ...) })`
+- **Astro env mocking:** Use `vi.stubEnv('BASE_URL', '/portfolio/')` in `beforeAll` blocks when `import.meta.env.BASE_URL` is needed
+- **Playwright URL paths:** Use relative paths (`./`, `./en/`) not absolute (`/`, `/en/`) so `baseURL` path component is preserved
 
 ## Notes
 
-- The project is a static portfolio site with minimal logic; the highest-value test additions would be:
-  1. Unit tests for `src/i18n/utils.ts` (pure functions, easy to test with Vitest)
-  2. E2E smoke tests with Playwright to verify both language routes render and the language switcher navigates correctly
-- Vitest is the natural choice for unit tests given the Vite/Astro build pipeline — no additional config is needed beyond installing `vitest`.
-- `@astrojs/check` is the only automated quality tool currently in use, and it is not wired to a `check` npm script.
+- Playwright is configured with `chromium` only to keep CI fast
+- E2E tests require `npm run build` before running — Playwright's `webServer` config starts `npm run preview` which serves the built `dist/`
+- Vitest uses `getViteConfig` from `astro/config` for proper Astro/Vite integration
+- `import.meta.env.BASE_URL` requires `vi.stubEnv()` in tests since `getViteConfig` doesn't propagate it reliably
