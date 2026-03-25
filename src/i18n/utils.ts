@@ -1,28 +1,31 @@
-import { translations, type Locale } from './translations';
+import { languages, translations, type Locale } from './translations'
 
-const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+export function getBase(): string {
+  return import.meta.env.BASE_URL.replace(/\/?$/, '/')
+}
 
 export function getLangFromUrl(url: URL): Locale {
-  let path = url.pathname;
+  const base = getBase()
+  let path = url.pathname
   if (base !== '/' && path.startsWith(base)) {
-    path = '/' + path.slice(base.length);
+    path = '/' + path.slice(base.length)
   }
-  const [, lang] = path.split('/');
-  if (lang === 'en') return 'en';
-  return 'pt-br';
+  const [, lang] = path.split('/')
+  if (lang && lang in languages) return lang as Locale
+  return 'pt-br'
 }
 
 export function useTranslations(lang: Locale) {
-  return translations[lang];
+  return translations[lang]
 }
 
 export function getAlternateUrl(currentLang: Locale): string {
   if (currentLang === 'pt-br') {
-    return `${base}en/`;
+    return `${getBase()}en/`
   }
-  return base;
+  return getBase()
 }
 
 export function getHtmlLang(locale: Locale): string {
-  return locale === 'pt-br' ? 'pt-BR' : 'en';
+  return locale === 'pt-br' ? 'pt-BR' : 'en'
 }
