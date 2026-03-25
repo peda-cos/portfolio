@@ -1,17 +1,10 @@
 <script lang="ts">
   interface Props {
-    currentLang: 'pt-br' | 'en';
+    label: string;
     alternatePath: string;
   }
 
-  const { currentLang, alternatePath }: Props = $props();
-
-  const labels: Record<string, string> = {
-    'pt-br': 'English',
-    en: 'Português',
-  };
-
-  const label = $derived(labels[currentLang]);
+  const { label, alternatePath }: Props = $props();
 </script>
 
 <a href={alternatePath} class="language-switcher" aria-label={`Switch to ${label}`}>

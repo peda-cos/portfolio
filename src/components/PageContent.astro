@@ -10,7 +10,7 @@ interface Props {
 
 const { lang, alternatePath } = Astro.props;
 const t = useTranslations(lang);
-const { header, summary, skills, experience, education, footer, a11y } = t;
+const { nav, header, summary, skills, experience, education, footer, a11y } = t;
 ---
 
 <a href="#main-content" class="skip-link">{a11y.skipToContent}</a>
@@ -21,7 +21,7 @@ const { header, summary, skills, experience, education, footer, a11y } = t;
         <h1>{header.name}</h1>
         <div class="role">{header.role}</div>
       </div>
-      <LanguageSwitcher currentLang={lang} alternatePath={alternatePath} />
+      <LanguageSwitcher label={nav.switchLang} alternatePath={alternatePath} />
     </div>
 
     <div class="header-contact">
