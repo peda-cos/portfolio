@@ -18,10 +18,7 @@ export const translations = {
         addressLocality: 'São Paulo',
         addressRegion: 'SP',
         addressCountry: 'BR',
-        sameAs: [
-          'https://linkedin.com/in/pedrocsmonteiro',
-          'https://github.com/peda-cos',
-        ],
+        sameAs: ['https://linkedin.com/in/pedrocsmonteiro', 'https://github.com/peda-cos'],
       },
     },
     nav: {
@@ -168,8 +165,7 @@ export const translations = {
             },
             {
               name: 'NetPractice',
-              description:
-                'Roteamento IP e sub-redes em topologias de rede funcionais.',
+              description: 'Roteamento IP e sub-redes em topologias de rede funcionais.',
             },
             {
               name: 'Born2beroot',
@@ -210,10 +206,7 @@ export const translations = {
         addressLocality: 'São Paulo',
         addressRegion: 'SP',
         addressCountry: 'BR',
-        sameAs: [
-          'https://linkedin.com/in/pedrocsmonteiro',
-          'https://github.com/peda-cos',
-        ],
+        sameAs: ['https://linkedin.com/in/pedrocsmonteiro', 'https://github.com/peda-cos'],
       },
     },
     nav: {
@@ -360,8 +353,7 @@ export const translations = {
             },
             {
               name: 'NetPractice',
-              description:
-                'IP routing and subnetting across functional network topologies.',
+              description: 'IP routing and subnetting across functional network topologies.',
             },
             {
               name: 'Born2beroot',

@@ -1,4 +1,4 @@
-import { defineConfig } from '@playwright/test'
+import { defineConfig } from '@playwright/test';
 
 export default defineConfig({
   testDir: './e2e',
@@ -15,4 +15,4 @@ export default defineConfig({
     url: 'http://localhost:4321/portfolio/',
     reuseExistingServer: !process.env.CI,
   },
-})
+});
