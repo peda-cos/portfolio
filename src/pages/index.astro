@@ -11,7 +11,7 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
 
 <BaseLayout lang={lang}>
-  <a href="#conteudo-principal" class="skip-link">{a11y.skipToContent}</a>
+  <a href="#main-content" class="skip-link">{a11y.skipToContent}</a>
   <div class="page">
     <header class="site-header">
       <div class="header-top">
@@ -33,13 +33,13 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
       </div>
     </header>
 
-    <main id="conteudo-principal">
-      <section id="resumo" class="summary" aria-labelledby="summary-heading">
+    <main id="main-content">
+      <section id="summary" class="summary" aria-labelledby="summary-heading">
         <h2 id="summary-heading">{summary.heading}</h2>
         <p>{summary.content}</p>
       </section>
 
-      <section id="habilidades" aria-labelledby="skills-heading">
+      <section id="skills" aria-labelledby="skills-heading">
         <h2 id="skills-heading">{skills.heading}</h2>
         <div class="skills-grid">
           {skills.categories.map((category) => (
@@ -55,7 +55,7 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
         </div>
       </section>
 
-      <section id="experiencia" aria-labelledby="experience-heading">
+      <section id="experience" aria-labelledby="experience-heading">
         <h2 id="experience-heading">{experience.heading}</h2>
         {experience.positions.map((job) => (
           <article class="entry">
@@ -76,7 +76,7 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
         ))}
       </section>
 
-      <section id="formacao" aria-labelledby="education-heading">
+      <section id="education" aria-labelledby="education-heading">
         <h2 id="education-heading">{education.heading}</h2>
         {education.institutions.map((school) => (
           <article class="entry">

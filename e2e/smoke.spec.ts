@@ -25,8 +25,7 @@ test.describe('PT page (/portfolio/)', () => {
 
   test('skip link target exists', async ({ page }) => {
     await page.goto('./')
-    // PT page uses id="conteudo-principal" (will be unified in Phase 3)
-    const main = page.locator('#conteudo-principal')
+    const main = page.locator('#main-content')
     await expect(main).toBeAttached()
   })
 
