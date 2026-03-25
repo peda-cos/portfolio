@@ -58,6 +58,16 @@
    - Steps: `npm ci` → `npx astro check` → `npm test` → `npm run test:e2e`
    - Update `deploy.yml` to depend on `lint-and-test` job
 
+**Plans:** 4 plans
+
+Plans:
+- [ ] 01-01-PLAN.md — Install Vitest + Playwright, configure test runners, refactor utils.ts for testability
+- [ ] 01-02-PLAN.md — Unit tests for utils.ts and translations.ts structure (TDD)
+- [ ] 01-03-PLAN.md — E2E smoke tests for both language routes
+- [ ] 01-04-PLAN.md — CI pipeline with lint-and-test job, deploy gate
+
+**Requirements:** [R1.1, R1.2, R1.3, R1.4, R1.5, R1.6, R1.7]
+
 **Verification gate:** `npm run build` + `npx astro check` + `npm test` + `npm run test:e2e`
 
 **Success criteria:**
