@@ -10,7 +10,7 @@ describe('translations structure', () => {
     expect(ptKeys).toEqual(enKeys);
   });
 
-  it.each(['meta', 'nav', 'header', 'summary', 'footer', 'a11y'] as const)(
+  it.each(['meta', 'nav', 'header', 'hero', 'cta', 'footer', 'a11y'] as const)(
     'has matching nested keys in %s for all locales',
     (section) => {
       const ptKeys = Object.keys(translations['pt-br'][section]).sort();
@@ -28,9 +28,9 @@ describe('translations structure', () => {
     }
   });
 
-  it('has matching skill categories count between locales', () => {
-    expect(translations['pt-br'].skills.categories.length).toBe(
-      translations['en'].skills.categories.length,
+  it('has matching value skill clusters count between locales', () => {
+    expect(translations['pt-br'].value.clusters.length).toBe(
+      translations['en'].value.clusters.length,
     );
   });
 
@@ -40,9 +40,9 @@ describe('translations structure', () => {
     );
   });
 
-  it('has matching education institutions count between locales', () => {
-    expect(translations['pt-br'].education.institutions.length).toBe(
-      translations['en'].education.institutions.length,
+  it('has matching craft institutions count between locales', () => {
+    expect(translations['pt-br'].craft.institutions.length).toBe(
+      translations['en'].craft.institutions.length,
     );
   });
 });

@@ -1,8 +1,8 @@
 export const ptBr = {
   meta: {
-    title: 'Pedro Monteiro - Engenheiro Full-Stack',
+    title: 'Pedro Monteiro — Engenheiro Full-Stack',
     description:
-      'Engenheiro full stack com experiência em todo o ciclo de vida de aplicações, da arquitetura ao deploy. Background em programação de sistemas (C/C++), desenvolvimento web (Angular, Go, Node.js, TypeScript, React, Python/Django) e tooling de DevOps (Docker, CI/CD, PostgreSQL).',
+      'Engenheiro full-stack com experiência em todo o ciclo de vida de aplicações — da arquitetura ao deploy. Especialista em TypeScript, Go, Angular, React e DevOps.',
     jsonLd: {
       name: 'Pedro Monteiro',
       email: 'pedrocsmonteiro@gmail.com',
@@ -14,10 +14,7 @@ export const ptBr = {
     },
   },
   nav: {
-    summary: 'Resumo',
-    skills: 'Habilidades',
-    experience: 'Experiência',
-    education: 'Formação',
+    ariaLabel: 'Navegação principal',
     switchLang: 'English',
   },
   header: {
@@ -28,158 +25,105 @@ export const ptBr = {
     linkedin: 'linkedin.com/in/pedrocsmonteiro',
     github: 'github.com/peda-cos',
   },
-  summary: {
-    heading: 'Resumo',
-    content:
-      'Engenheiro full stack com experiência em todo o ciclo de vida de aplicações, da arquitetura ao deploy. Background em programação de sistemas (C/C++), desenvolvimento web (Angular, Go, Node.js, TypeScript, React, Python/Django) e tooling de DevOps (Docker, CI/CD, PostgreSQL). Confortável com ownership completo do produto: conversar com usuários, iterar rapidamente e entregar. Orientado para entrega assíncrona, trabalho cross-funcional e código com peer review.',
+  hero: {
+    eyebrow: 'Engenheiro de software',
+    tagline: 'Construo produtos do início ao fim.',
+    sub: 'Da arquitetura ao deploy — full-stack, orientado a produto e apaixonado por código bem feito.',
   },
-  skills: {
-    heading: 'Habilidades',
-    categories: [
-      {
-        name: 'Linguagens',
-        items: ['C', 'C++', 'Python', 'TypeScript', 'JavaScript', 'Go', 'SQL'],
-      },
+  value: {
+    eyebrow: 'O que eu faço',
+    heading: 'Tecnologia que serve ao produto',
+    summary:
+      'Tenho experiência em todo o ciclo de vida de aplicações — da modelagem de dados e APIs ao frontend e infraestrutura. Gosto de ownership real: entender o problema, iterar rápido e entregar algo que funciona.',
+    clusters: [
       {
         name: 'Frontend',
-        items: ['Angular', 'React', 'Svelte', 'HTML/CSS'],
+        items: ['Angular', 'React', 'Svelte', 'TypeScript', 'HTML/CSS'],
       },
       {
-        name: 'Backend',
-        items: ['Node.js', 'Go', 'APIs RESTful'],
+        name: 'Backend & APIs',
+        items: ['Go', 'Node.js', 'Python', 'APIs RESTful', 'PostgreSQL'],
       },
       {
         name: 'Sistemas & Infra',
-        items: [
-          'Linux',
-          'Docker',
-          'CI/CD',
-          'System calls UNIX',
-          'Gerenciamento de processos',
-          'Roteamento IP / Sub-redes',
-          'SSH',
-          'Configuração de firewall',
-        ],
+        items: ['Docker', 'CI/CD', 'Linux', 'C', 'C++'],
       },
       {
-        name: 'Bancos de Dados',
-        items: ['PostgreSQL (design de schema, otimização de queries)'],
-      },
-      {
-        name: 'Conceitos',
-        items: [
-          'OOP',
-          'Gerenciamento de memória',
-          'Concorrência (threads POSIX / mutexes)',
-          'Estruturas de dados & algoritmos',
-          'MVC',
-          'Containers STL',
-          'Templates',
-          'Tratamento de exceções',
-          'Raycasting / pipeline gráfico',
-        ],
-      },
-      {
-        name: 'Soft Skills',
-        items: [
-          'Comunicação assíncrona',
-          'Code ownership com peer review',
-          'Colaboração cross-funcional',
-          'Documentação técnica',
-        ],
+        name: 'Forma de trabalhar',
+        items: ['Code review', 'Async', 'Cross-funcional', 'Docs técnica'],
       },
     ],
   },
   experience: {
-    heading: 'Experiência Profissional',
+    eyebrow: 'Experiência',
+    heading: 'Onde já atuei',
     positions: [
       {
         company: 'Máquinas Furlan Ltda.',
         role: 'Desenvolvedor de Software Júnior',
         period: 'Fev 2025 – Presente',
-        summary:
-          'Desenvolvimento full-stack em equipes ágeis com ownership de ponta a ponta, abrangendo concepção, implementação, deploy e iteração.',
         highlights: [
-          'Entrega de funcionalidades web completas usando Angular (frontend) e Go/Node.js (backend), com ownership do escopo desde o ticket até produção',
-          'Construção de componentes frontend escaláveis e modulares integrados a APIs RESTful, priorizando performance e confiabilidade',
-          'Implementação de workflows de CI/CD e containerização com Docker para otimizar deploy e reduzir fricção de integração',
-          'Participação em code reviews entre pares e colaboração cross-funcional com stakeholders',
+          'Entrega de features web completas com Angular (frontend) e Go/Node.js (backend), do ticket até produção',
+          'Componentes frontend escaláveis integrados a APIs RESTful, com foco em performance e confiabilidade',
+          'Pipelines de CI/CD e containerização com Docker para agilizar deploy e reduzir fricção',
+          'Code reviews entre pares e colaboração cross-funcional com stakeholders',
         ],
       },
       {
-        company: 'Secretaria Municipal da Saúde de São Paulo',
+        company: 'Secretaria Municipal da Saúde — SP',
         role: 'Estagiário de Desenvolvimento',
         period: 'Out 2023 – Fev 2025',
-        summary:
-          'Construção de ferramentas internas para otimizar fluxos administrativos em sistemas de saúde pública, entregando melhorias mensuráveis de eficiência.',
         highlights: [
-          'Automação de processos administrativos, reduzindo overhead manual e aumentando throughput operacional',
-          'Design e otimização de schemas e queries PostgreSQL para integridade de dados e performance',
-          'Construção de pipelines de análise de dados e dashboards de relatórios para tomada de decisão baseada em evidências',
+          'Automação de processos administrativos, reduzindo overhead manual e aumentando throughput',
+          'Design e otimização de schemas e queries PostgreSQL para integridade e performance',
+          'Dashboards de análise de dados para tomada de decisão baseada em evidências',
         ],
       },
     ],
   },
-  education: {
-    heading: 'Formação',
+  craft: {
+    eyebrow: 'Formação',
+    heading: 'Como me tornei quem sou',
+    narrative:
+      'Aprendo melhor construindo coisas reais e com feedback de pares. A 42 me ensinou a depurar problemas complexos e a UNINOVE me deu a base formal. Os dois juntos moldam como eu penso sobre software.',
     institutions: [
       {
         name: '42 São Paulo',
         degree: 'Engenharia de Software — Programa Intensivo',
-        period: 'Out 2024 – Set 2026 (em andamento) | Rank 5 do Core Curriculum concluído',
+        period: 'Out 2024 – Set 2026 (em andamento)',
         description:
-          'Escola de tecnologia baseada em aprendizado peer-to-peer e projetos práticos, sem professores ou aulas formais. O currículo abrange programação imperativa em C, programação orientada a objetos em C++, algoritmos e estruturas de dados, programação de sistemas (Unix/POSIX), administração de redes e servidores Linux, desenvolvimento web full stack e metodologias de trabalho colaborativo.',
-        projects: [
-          {
-            name: 'minishell',
-            description:
-              'Shell POSIX-compliant em C: parsing de comandos, variáveis de ambiente, pipes, redirecionamentos, gerenciamento de sinais. Projeto em grupo.',
-          },
-          {
-            name: 'Philosophers',
-            description:
-              'Jantar dos filósofos em C usando threads POSIX e mutexes; análise de race conditions, deadlock avoidance, execução concorrente.',
-          },
-          {
-            name: 'cub3D',
-            description:
-              'Engine 3D baseada em raycasting em C inspirada no Wolfenstein 3D; pipeline gráfico completo, renderização de texturas, input event-driven. Projeto em grupo.',
-          },
-          {
-            name: 'CPP Modules 00–09',
-            description:
-              'Currículo completo de C++: OOP, herança, polimorfismo, classes abstratas, tratamento de exceções, templates, containers STL.',
-          },
-          {
-            name: 'Inception',
-            description:
-              'Infraestrutura multi-serviço containerizada com Docker e Docker Compose: Nginx, WordPress, MariaDB, configuração de rede e volumes customizados.',
-          },
-          {
-            name: 'NetPractice',
-            description: 'Roteamento IP e sub-redes em topologias de rede funcionais.',
-          },
-          {
-            name: 'Born2beroot',
-            description:
-              'Virtualização Linux e sysadmin: gerenciamento de usuários/grupos, políticas sudo, hardening SSH, configuração de firewall.',
-          },
+          'Escola baseada em peer-to-peer e projetos práticos. Cobre C, C++, algoritmos, sistemas UNIX/POSIX, redes, web full-stack e trabalho colaborativo.',
+        highlights: [
+          'minishell',
+          'Philosophers',
+          'cub3D',
+          'Inception',
+          'NetPractice',
+          'Born2beroot',
+          'CPP 00–09',
         ],
-        skillsDeveloped:
-          'Algoritmos & estruturas de dados, programação imperativa e OOP, programação de sistemas, redes & sysadmin, computação gráfica, programação concorrente, colaboração entre pares.',
       },
       {
         name: 'UNINOVE',
         degree: 'Tecnólogo em Análise e Desenvolvimento de Sistemas',
         period: 'Jan 2023 – Jun 2025',
         description:
-          'Curso de formação full stack abrangendo desenvolvimento front-end e back-end, lógica de programação, engenharia de software, modelagem de sistemas (UML/RUP), bancos de dados, metodologias ágeis (Scrum/Kanban) e implantação e manutenção de sistemas computacionais.',
+          'Formação full-stack cobrindo engenharia de software, modelagem UML, bancos de dados, metodologias ágeis (Scrum/Kanban) e implantação de sistemas.',
       },
     ],
   },
+  cta: {
+    eyebrow: 'Vamos conversar',
+    heading: 'Disponível para novas oportunidades',
+    body: 'Se você está construindo algo interessante e precisa de alguém que entregue de verdade — mande uma mensagem.',
+    primary: 'Entrar em contato',
+    action: 'Enviar e-mail',
+  },
   footer: {
     builtWith: 'Feito com',
-    and: 'e',
+    svelte: ',',
+    tailwind: ' e',
+    period: '.',
   },
   a11y: {
     skipToContent: 'Ir para o conteúdo principal',

@@ -10,128 +10,309 @@ interface Props {
 
 const { lang, alternatePath } = Astro.props;
 const t = useTranslations(lang);
-const { nav, header, summary, skills, experience, education, footer, a11y } = t;
+const { nav, header, hero, value, experience, craft, cta, footer, a11y } = t;
 ---
 
 <a href="#main-content" class="skip-link">{a11y.skipToContent}</a>
-<div class="page">
-  <header class="site-header">
-    <div class="header-top">
-      <div class="header-identity">
-        <h1>{header.name}</h1>
-        <div class="role">{header.role}</div>
-      </div>
-      <LanguageSwitcher label={nav.switchLang} alternatePath={alternatePath} />
-    </div>
 
-    <div class="header-contact">
-      <a href={`mailto:${header.email}`}>{header.email}</a>
-      <span class="separator" aria-hidden="true">&middot;</span>
-      <a href={`https://${header.linkedin}`} target="_blank" rel="noopener noreferrer"
-        >LinkedIn<span class="sr-only"> {a11y.opensInNewTab}</span></a
-      >
-      <span class="separator" aria-hidden="true">&middot;</span>
-      <a href={`https://${header.github}`} target="_blank" rel="noopener noreferrer"
-        >GitHub<span class="sr-only"> {a11y.opensInNewTab}</span></a
-      >
-      <span class="separator" aria-hidden="true">&middot;</span>
-      <span class="location">{header.location}</span>
-    </div>
-  </header>
+<!-- ── Site nav ────────────────────────── -->
+<nav
+  class="fixed top-0 inset-x-0 z-50 flex justify-between items-center px-6 py-4 bg-[var(--color-bg)]/90 backdrop-blur-sm border-b border-[var(--color-border-subtle)] no-print"
+  aria-label={nav.ariaLabel}
+>
+  <span class="font-[family-name:var(--font-ui)] text-sm font-medium tracking-wide text-[var(--color-text-muted)]">
+    {header.name}
+  </span>
+  <LanguageSwitcher label={nav.switchLang} alternatePath={alternatePath} client:idle />
+</nav>
 
-  <main id="main-content">
-    <section id="summary" class="summary" aria-labelledby="summary-heading">
-      <h2 id="summary-heading">{summary.heading}</h2>
-      <p>{summary.content}</p>
-    </section>
+<!-- ── Main content ────────────────────── -->
+<main id="main-content">
 
-    <section id="skills" aria-labelledby="skills-heading">
-      <h2 id="skills-heading">{skills.heading}</h2>
-      <div class="skills-grid">
-        {
-          skills.categories.map((category) => (
-            <div class="skills-category">
-              <h3>{category.name}</h3>
-              <ul class="skills-list">
-                {category.items.map((item) => (
-                  <li class="skill-tag">{item}</li>
-                ))}
-              </ul>
-            </div>
-          ))
-        }
-      </div>
-    </section>
-
-    <section id="experience" aria-labelledby="experience-heading">
-      <h2 id="experience-heading">{experience.heading}</h2>
-      {
-        experience.positions.map((job) => (
-          <article class="entry">
-            <div class="entry-header">
-              <div class="entry-meta">
-                <h3>{job.company}</h3>
-              </div>
-              <span class="period">{job.period}</span>
-            </div>
-            <div class="entry-role">{job.role}</div>
-            <p class="entry-summary">{job.summary}</p>
-            <ul class="entry-highlights">
-              {job.highlights.map((item) => (
-                <li>{item}</li>
-              ))}
-            </ul>
-          </article>
-        ))
-      }
-    </section>
-
-    <section id="education" aria-labelledby="education-heading">
-      <h2 id="education-heading">{education.heading}</h2>
-      {
-        education.institutions.map((school) => (
-          <article class="entry">
-            <div class="entry-header">
-              <div class="entry-meta">
-                <h3>{school.name}</h3>
-              </div>
-              <span class="period">{school.period}</span>
-            </div>
-            <div class="degree">{school.degree}</div>
-            <p>{school.description}</p>
-
-            {'projects' in school && school.projects && (
-              <dl class="project-list">
-                {school.projects.map((project) => (
-                  <div class="project-item">
-                    <dt class="project-name">{project.name}</dt>
-                    <dd class="project-desc">{project.description}</dd>
-                  </div>
-                ))}
-              </dl>
-            )}
-
-            {'skillsDeveloped' in school && school.skillsDeveloped && (
-              <p class="skills-developed">
-                <strong>Skills:</strong> {school.skillsDeveloped}
-              </p>
-            )}
-          </article>
-        ))
-      }
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <p>
-      {footer.builtWith}
-      <a href="https://astro.build" target="_blank" rel="noopener noreferrer"
-        >Astro<span class="sr-only"> {a11y.opensInNewTab}</span></a
-      >
-      {footer.and}
-      <a href="https://svelte.dev" target="_blank" rel="noopener noreferrer"
-        >Svelte<span class="sr-only"> {a11y.opensInNewTab}</span></a
-      >
+  <!-- ── 1. Hero ──────────────────────── -->
+  <section
+    id="hero"
+    aria-labelledby="hero-name"
+    class="reveal min-h-dvh flex flex-col justify-center px-6 pt-24 pb-16 max-w-[var(--width-content)] mx-auto"
+  >
+    <p class="font-[family-name:var(--font-ui)] text-xs font-medium tracking-[0.18em] uppercase text-[var(--color-accent)] mb-4 opacity-80">
+      {hero.eyebrow}
     </p>
-  </footer>
-</div>
+    <h1
+      id="hero-name"
+      class="font-[family-name:var(--font-ui)] text-4xl sm:text-5xl font-bold tracking-tight text-[var(--color-text)] mb-5 leading-[1.1]"
+    >
+      {header.name}
+    </h1>
+    <p class="font-[family-name:var(--font-body)] text-xl sm:text-2xl font-light text-[var(--color-text-muted)] mb-2 leading-relaxed max-w-xl">
+      {hero.tagline}
+    </p>
+    <p class="font-[family-name:var(--font-body)] text-base text-[var(--color-text-faint)] mb-10 max-w-lg leading-relaxed">
+      {hero.sub}
+    </p>
+    <div class="flex flex-wrap gap-3 items-center">
+      <a
+        href={`mailto:${header.email}`}
+        class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--color-accent)] text-white font-[family-name:var(--font-ui)] text-sm font-medium tracking-wide transition-[opacity,transform] duration-[var(--duration-base)] hover:opacity-85 hover:[transform:scale(1.03)] focus-visible:opacity-85 focus-visible:[transform:scale(1.03)] motion-reduce:transition-none motion-reduce:hover:[transform:none] motion-reduce:focus-visible:[transform:none]"
+      >
+        {cta.primary}
+      </a>
+      <a
+        href={`https://${header.linkedin}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[var(--color-border)] text-[var(--color-text-muted)] font-[family-name:var(--font-ui)] text-sm font-medium tracking-wide transition-colors duration-[var(--duration-base)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] motion-reduce:transition-none"
+      >
+        LinkedIn<span class="sr-only"> {a11y.opensInNewTab}</span>
+      </a>
+    </div>
+    <!-- location / contact meta -->
+    <div class="flex flex-wrap gap-x-5 gap-y-1 mt-10 text-xs text-[var(--color-text-faint)] font-[family-name:var(--font-ui)]">
+      <span>{header.location}</span>
+      <span aria-hidden="true">·</span>
+      <a
+        href={`https://${header.github}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover:text-[var(--color-accent)]"
+      >github.com/peda-cos<span class="sr-only"> {a11y.opensInNewTab}</span></a>
+    </div>
+  </section>
+
+  <!-- ── Divider ───────────────────────── -->
+  <div class="max-w-[var(--width-content)] mx-auto px-6">
+    <hr class="border-none h-px bg-[var(--color-border)]" />
+  </div>
+
+  <!-- ── 2. Value / what I bring ────────── -->
+  <section
+    id="value"
+    aria-labelledby="value-heading"
+    class="reveal py-20 px-6 max-w-[var(--width-content)] mx-auto"
+  >
+    <p class="font-[family-name:var(--font-ui)] text-xs font-medium tracking-[0.18em] uppercase text-[var(--color-accent)] mb-4 opacity-80">
+      {value.eyebrow}
+    </p>
+    <h2
+      id="value-heading"
+      class="font-[family-name:var(--font-ui)] text-2xl sm:text-3xl font-semibold text-[var(--color-text)] mb-6 tracking-tight"
+    >
+      {value.heading}
+    </h2>
+    <p class="font-[family-name:var(--font-body)] text-lg text-[var(--color-text-muted)] mb-10 max-w-2xl leading-relaxed">
+      {value.summary}
+    </p>
+
+    <!-- Skill clusters -->
+    <div class="reveal-stagger grid grid-cols-1 sm:grid-cols-2 gap-6">
+      {value.clusters.map((cluster) => (
+        <div class="card-lift p-5 rounded-xl bg-[var(--color-surface-raised)] border border-[var(--color-border-subtle)]">
+          <h3 class="font-[family-name:var(--font-ui)] text-xs font-semibold tracking-[0.14em] uppercase text-[var(--color-text-faint)] mb-3">
+            {cluster.name}
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            {cluster.items.map((item) => (
+              <span class="inline-block px-3 py-1 rounded-full text-xs font-medium font-[family-name:var(--font-ui)] bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-text-muted)]">
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ── Divider ───────────────────────── -->
+  <div class="max-w-[var(--width-content)] mx-auto px-6">
+    <hr class="border-none h-px bg-[var(--color-border)]" />
+  </div>
+
+  <!-- ── 3. Experience proof ─────────────── -->
+  <section
+    id="experience"
+    aria-labelledby="experience-heading"
+    class="reveal py-20 px-6 max-w-[var(--width-content)] mx-auto"
+  >
+    <p class="font-[family-name:var(--font-ui)] text-xs font-medium tracking-[0.18em] uppercase text-[var(--color-accent)] mb-4 opacity-80">
+      {experience.eyebrow}
+    </p>
+    <h2
+      id="experience-heading"
+      class="font-[family-name:var(--font-ui)] text-2xl sm:text-3xl font-semibold text-[var(--color-text)] mb-12 tracking-tight"
+    >
+      {experience.heading}
+    </h2>
+
+    <div class="space-y-10">
+      {experience.positions.map((job) => (
+        <article class="group relative pl-5 border-l-2 border-[var(--color-border)] transition-colors duration-[var(--duration-base)] hover:border-[var(--color-accent)] motion-reduce:transition-none">
+          <div class="flex flex-wrap justify-between items-baseline gap-2 mb-1">
+            <h3 class="font-[family-name:var(--font-ui)] text-base font-semibold text-[var(--color-text)]">
+              {job.company}
+            </h3>
+            <span class="font-[family-name:var(--font-ui)] text-xs text-[var(--color-text-faint)] whitespace-nowrap">
+              {job.period}
+            </span>
+          </div>
+          <p class="font-[family-name:var(--font-ui)] text-sm font-medium text-[var(--color-text-muted)] mb-3">
+            {job.role}
+          </p>
+          <ul class="space-y-1.5 list-none p-0 m-0">
+            {job.highlights.map((item) => (
+              <li class="flex gap-2 font-[family-name:var(--font-body)] text-sm text-[var(--color-text-muted)] leading-relaxed">
+                <span class="mt-1.5 shrink-0 w-1 h-1 rounded-full bg-[var(--color-accent)] opacity-60" aria-hidden="true"></span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- ── Divider ───────────────────────── -->
+  <div class="max-w-[var(--width-content)] mx-auto px-6">
+    <hr class="border-none h-px bg-[var(--color-border)]" />
+  </div>
+
+  <!-- ── 4. Craft / about (education) ───── -->
+  <section
+    id="craft"
+    aria-labelledby="craft-heading"
+    class="reveal py-20 px-6 max-w-[var(--width-content)] mx-auto"
+  >
+    <p class="font-[family-name:var(--font-ui)] text-xs font-medium tracking-[0.18em] uppercase text-[var(--color-accent)] mb-4 opacity-80">
+      {craft.eyebrow}
+    </p>
+    <h2
+      id="craft-heading"
+      class="font-[family-name:var(--font-ui)] text-2xl sm:text-3xl font-semibold text-[var(--color-text)] mb-6 tracking-tight"
+    >
+      {craft.heading}
+    </h2>
+    <p class="font-[family-name:var(--font-body)] text-lg text-[var(--color-text-muted)] mb-12 max-w-2xl leading-relaxed">
+      {craft.narrative}
+    </p>
+
+    <div class="space-y-8">
+      {craft.institutions.map((school) => (
+        <article class="card-lift p-6 rounded-xl bg-[var(--color-surface-raised)] border border-[var(--color-border-subtle)]">
+          <div class="flex flex-wrap justify-between items-baseline gap-2 mb-1">
+            <h3 class="font-[family-name:var(--font-ui)] text-base font-semibold text-[var(--color-text)]">
+              {school.name}
+            </h3>
+            <span class="font-[family-name:var(--font-ui)] text-xs text-[var(--color-text-faint)]">
+              {school.period}
+            </span>
+          </div>
+          <p class="font-[family-name:var(--font-ui)] text-sm font-medium text-[var(--color-text-muted)] mb-3">
+            {school.degree}
+          </p>
+          <p class="font-[family-name:var(--font-body)] text-sm text-[var(--color-text-muted)] leading-relaxed">
+            {school.description}
+          </p>
+          {'highlights' in school && school.highlights && (
+            <div class="mt-4 flex flex-wrap gap-2">
+              {school.highlights.map((h) => (
+                <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium font-[family-name:var(--font-ui)] bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-text-muted)]">
+                  {h}
+                </span>
+              ))}
+            </div>
+          )}
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- ── Divider ───────────────────────── -->
+  <div class="max-w-[var(--width-content)] mx-auto px-6">
+    <hr class="border-none h-px bg-[var(--color-border)]" />
+  </div>
+
+  <!-- ── 5. Final CTA ─────────────────── -->
+  <section
+    id="contact"
+    aria-labelledby="cta-heading"
+    class="reveal py-24 px-6 max-w-[var(--width-content)] mx-auto text-center"
+  >
+    <p class="font-[family-name:var(--font-ui)] text-xs font-medium tracking-[0.18em] uppercase text-[var(--color-accent)] mb-4 opacity-80">
+      {cta.eyebrow}
+    </p>
+    <h2
+      id="cta-heading"
+      class="font-[family-name:var(--font-ui)] text-3xl sm:text-4xl font-semibold text-[var(--color-text)] mb-5 tracking-tight"
+    >
+      {cta.heading}
+    </h2>
+    <p class="font-[family-name:var(--font-body)] text-lg text-[var(--color-text-muted)] mb-10 max-w-md mx-auto leading-relaxed">
+      {cta.body}
+    </p>
+    <a
+      href={`mailto:${header.email}`}
+      class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[var(--color-accent)] text-white font-[family-name:var(--font-ui)] text-sm font-semibold tracking-wide transition-[opacity,transform] duration-[var(--duration-base)] hover:opacity-85 hover:[transform:scale(1.03)] focus-visible:opacity-85 focus-visible:[transform:scale(1.03)] motion-reduce:transition-none motion-reduce:hover:[transform:none] motion-reduce:focus-visible:[transform:none]"
+    >
+      {cta.action}
+    </a>
+    <p class="mt-6 text-xs text-[var(--color-text-faint)] font-[family-name:var(--font-ui)]">
+      {header.email}
+    </p>
+  </section>
+
+</main>
+
+<!-- ── Footer ──────────────────────────── -->
+<footer class="py-8 px-6 border-t border-[var(--color-border-subtle)] text-center">
+  <p class="font-[family-name:var(--font-ui)] text-xs text-[var(--color-text-faint)]">
+    {footer.builtWith}
+    <a
+      href="https://astro.build"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-[var(--color-text-muted)] hover:text-[var(--color-accent)]"
+    >Astro<span class="sr-only"> {a11y.opensInNewTab}</span></a>
+    {footer.svelte}
+    <a
+      href="https://svelte.dev"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-[var(--color-text-muted)] hover:text-[var(--color-accent)]"
+    >Svelte<span class="sr-only"> {a11y.opensInNewTab}</span></a>
+    {footer.tailwind}
+    <a
+      href="https://tailwindcss.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-[var(--color-text-muted)] hover:text-[var(--color-accent)]"
+    >Tailwind<span class="sr-only"> {a11y.opensInNewTab}</span></a>
+    {footer.period}
+  </p>
+</footer>
+
+<!-- ── Scroll-reveal observer ──────────── -->
+<script is:inline>
+  (function () {
+    // Only run when the user hasn't requested reduced motion
+    var mq = window.matchMedia('(prefers-reduced-motion: no-preference)');
+    if (!mq.matches) return;
+
+    var targets = document.querySelectorAll('.reveal, .reveal-stagger');
+    if (!targets.length) return;
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    targets.forEach(function (el) {
+      observer.observe(el);
+    });
+  })();
+</script>
