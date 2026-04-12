@@ -38,6 +38,36 @@ test.describe('PT page (/portfolio/)', () => {
     const lang = await page.locator('html').getAttribute('lang');
     expect(lang).toBe('en');
   });
+
+  test('hero CTA renders with localized label and btn-primary class', async ({ page }) => {
+    await page.goto('./');
+    const heroCta = page.locator('#hero a[href^="mailto:"]');
+    await expect(heroCta).toBeVisible();
+    await expect(heroCta).toHaveText('Entrar em contato');
+    await expect(heroCta).toHaveClass(/btn-primary/);
+  });
+
+  test('final CTA renders with localized label and btn-primary class', async ({ page }) => {
+    await page.goto('./');
+    const finalCta = page.locator('#contact a[href^="mailto:"]');
+    await expect(finalCta).toBeVisible();
+    await expect(finalCta).toHaveText('Enviar e-mail');
+    await expect(finalCta).toHaveClass(/btn-primary/);
+  });
+
+  test('hero CTA shows visible focus treatment when focused', async ({ page }) => {
+    await page.goto('./');
+    const heroCta = page.locator('#hero a[href^="mailto:"]');
+    await heroCta.focus();
+    await expect(heroCta).toBeFocused();
+  });
+
+  test('final CTA shows visible focus treatment when focused', async ({ page }) => {
+    await page.goto('./');
+    const finalCta = page.locator('#contact a[href^="mailto:"]');
+    await finalCta.focus();
+    await expect(finalCta).toBeFocused();
+  });
 });
 
 test.describe('EN page (/portfolio/en/)', () => {
@@ -74,5 +104,35 @@ test.describe('EN page (/portfolio/en/)', () => {
     await page.waitForURL((url) => !url.pathname.includes('/en/'));
     const lang = await page.locator('html').getAttribute('lang');
     expect(lang).toBe('pt-BR');
+  });
+
+  test('hero CTA renders with localized label and btn-primary class', async ({ page }) => {
+    await page.goto('./en/');
+    const heroCta = page.locator('#hero a[href^="mailto:"]');
+    await expect(heroCta).toBeVisible();
+    await expect(heroCta).toHaveText('Get in touch');
+    await expect(heroCta).toHaveClass(/btn-primary/);
+  });
+
+  test('final CTA renders with localized label and btn-primary class', async ({ page }) => {
+    await page.goto('./en/');
+    const finalCta = page.locator('#contact a[href^="mailto:"]');
+    await expect(finalCta).toBeVisible();
+    await expect(finalCta).toHaveText('Send an email');
+    await expect(finalCta).toHaveClass(/btn-primary/);
+  });
+
+  test('hero CTA shows visible focus treatment when focused', async ({ page }) => {
+    await page.goto('./en/');
+    const heroCta = page.locator('#hero a[href^="mailto:"]');
+    await heroCta.focus();
+    await expect(heroCta).toBeFocused();
+  });
+
+  test('final CTA shows visible focus treatment when focused', async ({ page }) => {
+    await page.goto('./en/');
+    const finalCta = page.locator('#contact a[href^="mailto:"]');
+    await finalCta.focus();
+    await expect(finalCta).toBeFocused();
   });
 });

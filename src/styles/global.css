@@ -105,6 +105,8 @@
   --color-text-muted: var(--color-stone-700);
   --color-text-faint: var(--color-stone-500);
   --color-accent: var(--color-sage-500);
+  --color-accent-hover: var(--color-sage-600);
+  --color-accent-fg: var(--color-stone-50);
   --color-accent-warm: var(--color-clay-500);
   --color-border: var(--color-stone-200);
   --color-border-subtle: var(--color-stone-100);
@@ -232,6 +234,46 @@ a:hover {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+/* ── Primary CTA button ──────────────── */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  background-color: var(--color-accent);
+  color: var(--color-accent-fg);
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+  text-decoration: none;
+  transition:
+    background-color var(--duration-base) var(--ease-gentle),
+    color var(--duration-base) var(--ease-gentle);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent-hover);
+  color: var(--color-accent-fg);
+  opacity: 1;
+}
+
+.btn-primary:focus-visible {
+  background-color: var(--color-accent-hover);
+  color: var(--color-accent-fg);
+  opacity: 1;
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-primary {
+    transition: none;
+  }
 }
 
 /* ── Scroll-reveal animation ─────────── */

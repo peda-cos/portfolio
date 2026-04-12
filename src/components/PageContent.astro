@@ -58,10 +58,7 @@ const { nav, header, hero, value, experience, craft, cta, footer, a11y } = t;
       {hero.sub}
     </p>
     <div class="flex flex-wrap gap-3 items-center">
-      <a
-        href={`mailto:${header.email}`}
-        class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--color-accent)] text-[var(--color-stone-50)] font-[family-name:var(--font-ui)] text-base font-medium tracking-wide transition-opacity duration-[var(--duration-base)] hover:opacity-85 focus-visible:opacity-85 motion-reduce:transition-none"
-      >
+      <a href={`mailto:${header.email}`} class="btn-primary">
         {cta.primary}
       </a>
       <a
@@ -281,10 +278,7 @@ const { nav, header, hero, value, experience, craft, cta, footer, a11y } = t;
     >
       {cta.body}
     </p>
-    <a
-      href={`mailto:${header.email}`}
-      class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[var(--color-accent)] text-[var(--color-stone-50)] font-[family-name:var(--font-ui)] text-base font-semibold tracking-wide transition-opacity duration-[var(--duration-base)] hover:opacity-85 focus-visible:opacity-85 motion-reduce:transition-none"
-    >
+    <a href={`mailto:${header.email}`} class="btn-primary px-8 py-4 text-base font-semibold">
       {cta.action}
     </a>
     <p class="mt-6 text-xs text-[var(--color-text-faint)] font-[family-name:var(--font-ui)]">
