@@ -1,9 +1,9 @@
 export const ptBr = {
   meta: {
-    title: 'Pedro Monteiro — Engenheiro Full-Stack',
+    title: 'Pedro Monteiro, Engenheiro Full-Stack',
     description:
-      'Engenheiro full-stack com experiência em todo o ciclo de vida de aplicações — da arquitetura ao deploy. Especialista em TypeScript, Go, Angular, React e DevOps.',
-    ogImageAlt: 'Pedro Monteiro — Engenheiro Full-Stack imagem de pré-visualização social',
+      'Engenheiro full-stack com experiência em todo o ciclo de vida de aplicações, da arquitetura ao deploy. Especialista em TypeScript, Go, Angular, React e DevOps.',
+    ogImageAlt: 'Pedro Monteiro, Engenheiro Full-Stack imagem de pré-visualização social',
     jsonLd: {
       name: 'Pedro Monteiro',
       email: 'pedrocsmonteiro@gmail.com',
@@ -28,13 +28,13 @@ export const ptBr = {
   hero: {
     eyebrow: 'Engenheiro de software',
     tagline: 'Construo produtos do início ao fim.',
-    sub: 'Da arquitetura ao deploy — full-stack, orientado a produto e comprometido com código bem feito.',
+    sub: 'Da arquitetura ao deploy: full-stack, orientado a produto e comprometido com código bem feito.',
   },
   value: {
     eyebrow: 'O que eu faço',
     heading: 'Tecnologia que serve ao produto',
     summary:
-      'Tenho experiência em todo o ciclo de vida de aplicações — da modelagem de dados e APIs ao frontend e infraestrutura. Gosto de ownership real: entender o problema, iterar rápido e entregar algo que funciona.',
+      'Tenho experiência em todo o ciclo de vida de aplicações, da modelagem de dados e APIs ao frontend e infraestrutura. Gosto de ownership real: entender o problema, iterar rápido e entregar algo que funciona.',
     clusters: [
       {
         name: 'Frontend',
@@ -61,7 +61,7 @@ export const ptBr = {
       {
         company: 'Máquinas Furlan Ltda.',
         role: 'Desenvolvedor de Software Júnior',
-        period: 'Fev 2025 – Presente',
+        period: 'Fev 2025 a Presente',
         highlights: [
           'Entrega de features web completas com Angular (frontend) e Go/Node.js (backend), do ticket até produção',
           'Componentes frontend escaláveis integrados a APIs RESTful, com foco em performance e confiabilidade',
@@ -70,9 +70,9 @@ export const ptBr = {
         ],
       },
       {
-        company: 'Secretaria Municipal da Saúde — SP',
+        company: 'Secretaria Municipal da Saúde de SP',
         role: 'Estagiário de Desenvolvimento',
-        period: 'Out 2023 – Fev 2025',
+        period: 'Out 2023 a Fev 2025',
         highlights: [
           'Automação de processos administrativos, reduzindo overhead manual e aumentando throughput',
           'Design e otimização de schemas e queries PostgreSQL para integridade e performance',
@@ -89,8 +89,8 @@ export const ptBr = {
     institutions: [
       {
         name: '42 São Paulo',
-        degree: 'Engenharia de Software — Programa Intensivo',
-        period: 'Out 2024 – Set 2026 (em andamento)',
+        degree: 'Engenharia de Software, Programa Intensivo',
+        period: 'Out 2024 a Set 2026 (em andamento)',
         description:
           'Escola baseada em peer-to-peer e projetos práticos. Cobre C, C++, algoritmos, sistemas UNIX/POSIX, redes, web full-stack e trabalho colaborativo.',
         highlights: [
@@ -100,13 +100,13 @@ export const ptBr = {
           'Inception',
           'NetPractice',
           'Born2beroot',
-          'CPP 00–09',
+          'CPP 00-09',
         ],
       },
       {
         name: 'UNINOVE',
         degree: 'Tecnólogo em Análise e Desenvolvimento de Sistemas',
-        period: 'Jan 2023 – Jun 2025',
+        period: 'Jan 2023 a Jun 2025',
         description:
           'Formação full-stack cobrindo engenharia de software, modelagem UML, bancos de dados, metodologias ágeis (Scrum/Kanban) e implantação de sistemas.',
       },
@@ -115,7 +115,7 @@ export const ptBr = {
   cta: {
     eyebrow: 'Vamos conversar',
     heading: 'Disponível para novas oportunidades',
-    body: 'Se você está construindo algo interessante e precisa de alguém que entregue de verdade — mande uma mensagem.',
+    body: 'Se você está construindo algo interessante e precisa de alguém que entregue de verdade. Mande uma mensagem.',
     primary: 'Entrar em contato',
     action: 'Enviar e-mail',
   },

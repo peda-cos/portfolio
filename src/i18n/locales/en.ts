@@ -1,9 +1,9 @@
 export const en = {
   meta: {
-    title: 'Pedro Monteiro — Full-Stack Engineer',
+    title: 'Pedro Monteiro, Full-Stack Engineer',
     description:
-      'Full-stack engineer with experience across the entire application lifecycle — from architecture to deployment. Specialising in TypeScript, Go, Angular, React and DevOps.',
-    ogImageAlt: 'Pedro Monteiro — Full-Stack Engineer social preview image',
+      'Full-stack engineer with experience across the entire application lifecycle, from architecture to deployment. Specialising in TypeScript, Go, Angular, React and DevOps.',
+    ogImageAlt: 'Pedro Monteiro, Full-Stack Engineer social preview image',
     jsonLd: {
       name: 'Pedro Monteiro',
       email: 'pedrocsmonteiro@gmail.com',
@@ -28,13 +28,13 @@ export const en = {
   hero: {
     eyebrow: 'Software engineer',
     tagline: 'I build products end to end.',
-    sub: 'From architecture to deployment — full-stack, product-oriented, and focused on well-crafted code.',
+    sub: 'From architecture to deployment: full-stack, product-oriented, and focused on well-crafted code.',
   },
   value: {
     eyebrow: 'What I do',
     heading: 'Technology that serves the product',
     summary:
-      'I have experience across the full application lifecycle — from data modelling and APIs to frontend and infrastructure. I like real ownership: understand the problem, iterate quickly, and ship something that works.',
+      'I have experience across the full application lifecycle, from data modelling and APIs to frontend and infrastructure. I like real ownership: understand the problem, iterate quickly, and ship something that works.',
     clusters: [
       {
         name: 'Frontend',
@@ -61,7 +61,7 @@ export const en = {
       {
         company: 'Máquinas Furlan Ltda.',
         role: 'Junior Software Developer',
-        period: 'Feb 2025 – Present',
+        period: 'Feb 2025 to Present',
         highlights: [
           'Delivered complete web features using Angular (frontend) and Go/Node.js (backend), with full ownership from ticket to production',
           'Built scalable, modular frontend components integrated with RESTful APIs, prioritising performance and reliability',
@@ -72,7 +72,7 @@ export const en = {
       {
         company: 'São Paulo Municipal Health Secretariat',
         role: 'Development Intern',
-        period: 'Oct 2023 – Feb 2025',
+        period: 'Oct 2023 to Feb 2025',
         highlights: [
           'Automated administrative processes, reducing manual overhead and increasing operational throughput',
           'Designed and optimised PostgreSQL schemas and queries for data integrity and performance',
@@ -89,8 +89,8 @@ export const en = {
     institutions: [
       {
         name: '42 São Paulo',
-        degree: 'Software Engineering — Intensive Program',
-        period: 'Oct 2024 – Sep 2026 (in progress)',
+        degree: 'Software Engineering, Intensive Program',
+        period: 'Oct 2024 to Sep 2026 (in progress)',
         description:
           'Peer-to-peer school with no teachers, built on practical projects. Covers C, C++, algorithms, UNIX/POSIX systems, networking, full-stack web, and collaborative teamwork.',
         highlights: [
@@ -100,13 +100,13 @@ export const en = {
           'Inception',
           'NetPractice',
           'Born2beroot',
-          'CPP 00–09',
+          'CPP 00-09',
         ],
       },
       {
         name: 'UNINOVE',
         degree: 'B.Tech in Systems Analysis & Development',
-        period: 'Jan 2023 – Jun 2025',
+        period: 'Jan 2023 to Jun 2025',
         description:
           'Full-stack programme covering software engineering, UML modelling, databases, agile methodologies (Scrum/Kanban), and deployment and maintenance of computational systems.',
       },
@@ -115,7 +115,7 @@ export const en = {
   cta: {
     eyebrow: "Let's talk",
     heading: 'Open to new opportunities',
-    body: "If you're building something interesting and need someone who genuinely delivers — reach out.",
+    body: "If you're building something interesting and need someone who genuinely delivers. Reach out.",
     primary: 'Get in touch',
     action: 'Send an email',
   },
