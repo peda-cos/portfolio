@@ -11,12 +11,31 @@ import { test, expect } from '@playwright/test';
  * Each entry is a CSS selector for the focusable element.
  */
 const sharedTabOrder = [
+  // Skip link
   '.skip-link',
+  // Language switcher
   'nav [aria-label^="Switch to"]',
+  // Hero CTA and social links
   '#hero a[href^="mailto:"]',
   '#hero a[href*="linkedin"]',
   '#hero a[href*="github"]',
+  // Education highlight links (#craft section – same URLs in both locales)
+  'a[href="https://github.com/peda-cos/libft"]',
+  'a[href="https://github.com/peda-cos/ft_printf"]',
+  'a[href="https://github.com/peda-cos/get_next_line"]',
+  'a[href="https://github.com/peda-cos/Born2beroot"]',
+  'a[href="https://github.com/peda-cos/push_swap"]',
+  'a[href="https://github.com/peda-cos/pipex"]',
+  'a[href="https://github.com/peda-cos/FdF"]',
+  'a[href="https://github.com/peda-cos/minishell"]',
+  'a[href="https://github.com/peda-cos/Philosophers"]',
+  'a[href="https://github.com/jonnathan-ls/42-cursus-cub3d"]',
+  'a[href="https://github.com/peda-cos/NetPractice"]',
+  'a[href="https://github.com/peda-cos/CPP_Modules"]',
+  'a[href="https://github.com/peda-cos/Inception"]',
+  // Contact CTA
   '#contact a[href^="mailto:"]',
+  // Footer credit links
   'footer a[href*="astro.build"]',
   'footer a[href*="svelte.dev"]',
   'footer a[href*="tailwindcss.com"]',
