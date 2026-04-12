@@ -4,6 +4,44 @@ import { test, expect } from '@playwright/test';
 // against baseURL. Absolute paths (/ and /en/) would discard the baseURL
 // path component (/portfolio/) and hit the server root, returning 404.
 
+// ── Keyboard-navigation helpers ───────────────────────────────────────────────
+
+/**
+ * Expected sequential tab order for shared interactive controls.
+ * Each entry is a CSS selector for the focusable element.
+ */
+const sharedTabOrder = [
+  '.skip-link',
+  'nav [aria-label^="Switch to"]',
+  '#hero a[href^="mailto:"]',
+  '#hero a[href*="linkedin"]',
+  '#hero a[href*="github"]',
+  '#contact a[href^="mailto:"]',
+  'footer a[href*="astro.build"]',
+  'footer a[href*="svelte.dev"]',
+  'footer a[href*="tailwindcss.com"]',
+];
+
+/**
+ * Press Tab `count` times starting from the top of the page.
+ * Focuses <html> first so Tab reliably begins from the first focusable element.
+ */
+async function tabThrough(page: import('@playwright/test').Page, count: number) {
+  await page.evaluate(() => (document.documentElement as HTMLElement).focus());
+  for (let i = 0; i < count; i++) {
+    await page.keyboard.press('Tab');
+  }
+}
+
+/**
+ * Press Tab once from the current focused position (no reset).
+ */
+async function tabOnce(page: import('@playwright/test').Page) {
+  await page.keyboard.press('Tab');
+}
+
+// ── PT page (/portfolio/) ────────────────────────────────────────────────────
+
 test.describe('PT page (/portfolio/)', () => {
   test('renders with correct lang attribute', async ({ page }) => {
     await page.goto('./');
@@ -67,6 +105,30 @@ test.describe('PT page (/portfolio/)', () => {
     const finalCta = page.locator('#contact a[href^="mailto:"]');
     await finalCta.focus();
     await expect(finalCta).toBeFocused();
+  });
+
+  test('keyboard: Tab forward through shared controls in expected order', async ({ page }) => {
+    await page.goto('./');
+    // Focus <html> so Tab reliably starts from the first focusable element
+    await page.evaluate(() => (document.documentElement as HTMLElement).focus());
+    for (const selector of sharedTabOrder) {
+      await tabOnce(page);
+      await expect(page.locator(selector)).toBeFocused();
+    }
+  });
+
+  test('keyboard: Shift+Tab backward reverses tab order through shared controls', async ({
+    page,
+  }) => {
+    await page.goto('./');
+    // Advance focus to the last control in the shared order using tabThrough
+    await tabThrough(page, sharedTabOrder.length);
+    await expect(page.locator(sharedTabOrder[sharedTabOrder.length - 1])).toBeFocused();
+    // Walk backward and verify each step
+    for (let i = sharedTabOrder.length - 2; i >= 0; i--) {
+      await page.keyboard.press('Shift+Tab');
+      await expect(page.locator(sharedTabOrder[i])).toBeFocused();
+    }
   });
 });
 
@@ -134,5 +196,29 @@ test.describe('EN page (/portfolio/en/)', () => {
     const finalCta = page.locator('#contact a[href^="mailto:"]');
     await finalCta.focus();
     await expect(finalCta).toBeFocused();
+  });
+
+  test('keyboard: Tab forward through shared controls in expected order', async ({ page }) => {
+    await page.goto('./en/');
+    // Focus <html> so Tab reliably starts from the first focusable element
+    await page.evaluate(() => (document.documentElement as HTMLElement).focus());
+    for (const selector of sharedTabOrder) {
+      await tabOnce(page);
+      await expect(page.locator(selector)).toBeFocused();
+    }
+  });
+
+  test('keyboard: Shift+Tab backward reverses tab order through shared controls', async ({
+    page,
+  }) => {
+    await page.goto('./en/');
+    // Advance focus to the last control in the shared order using tabThrough
+    await tabThrough(page, sharedTabOrder.length);
+    await expect(page.locator(sharedTabOrder[sharedTabOrder.length - 1])).toBeFocused();
+    // Walk backward and verify each step
+    for (let i = sharedTabOrder.length - 2; i >= 0; i--) {
+      await page.keyboard.press('Shift+Tab');
+      await expect(page.locator(sharedTabOrder[i])).toBeFocused();
+    }
   });
 });
