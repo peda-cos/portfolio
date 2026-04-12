@@ -282,15 +282,11 @@ a:hover {
 
   /* Hover lift for cards */
   .card-lift {
-    transition:
-      transform var(--duration-base) var(--ease-gentle),
-      box-shadow var(--duration-base) var(--ease-gentle),
-      border-color var(--duration-base) var(--ease-gentle);
+    transition: border-color var(--duration-base) var(--ease-gentle);
   }
 
   .card-lift:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 16px oklch(0% 0 0 / 0.06);
+    border-color: var(--color-border);
   }
 }
 
