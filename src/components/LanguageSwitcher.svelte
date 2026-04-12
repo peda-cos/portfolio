@@ -10,7 +10,7 @@
 <a
   href={alternatePath}
   aria-label={`Switch to ${label}`}
-  class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-[var(--color-border)] text-[var(--color-text-muted)] font-[family-name:var(--font-ui)] text-xs font-medium tracking-wide transition-colors duration-[var(--duration-base)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] focus-visible:border-[var(--color-accent)] focus-visible:text-[var(--color-accent)] motion-reduce:transition-none"
+  class="inline-flex items-center gap-1.5 px-4 py-3.5 min-h-[44px] rounded-full border border-[var(--color-border)] text-[var(--color-text-muted)] font-[family-name:var(--font-ui)] text-xs font-medium tracking-wide transition-colors duration-[var(--duration-base)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] focus-visible:border-[var(--color-accent)] focus-visible:text-[var(--color-accent)] motion-reduce:transition-none"
 >
   <svg
     xmlns="http://www.w3.org/2000/svg"

@@ -29,7 +29,7 @@ const { nav, header, hero, value, experience, craft, cta, footer, a11y } = t;
 </nav>
 
 <!-- ── Main content ────────────────────── -->
-<main id="main-content">
+<main id="main-content" tabindex="-1">
   <!-- ── 1. Hero ──────────────────────── -->
   <section
     id="hero"
@@ -65,9 +65,10 @@ const { nav, header, hero, value, experience, craft, cta, footer, a11y } = t;
         href={`https://${header.linkedin}`}
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[var(--color-border)] text-[var(--color-text-muted)] font-[family-name:var(--font-ui)] text-sm font-medium tracking-wide transition-colors duration-[var(--duration-base)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] motion-reduce:transition-none"
+        aria-label={`${a11y.linkedinProfile} ${a11y.opensInNewTab}`}
+        class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[var(--color-border)] text-[var(--color-text-muted)] font-[family-name:var(--font-ui)] text-sm font-medium tracking-wide no-underline transition-colors duration-[var(--duration-base)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] motion-reduce:transition-none"
       >
-        LinkedIn<span class="sr-only"> {a11y.opensInNewTab}</span>
+        LinkedIn
       </a>
     </div>
     <!-- location / contact meta -->
@@ -80,8 +81,9 @@ const { nav, header, hero, value, experience, craft, cta, footer, a11y } = t;
         href={`https://${header.github}`}
         target="_blank"
         rel="noopener noreferrer"
-        class="hover:text-[var(--color-accent)]"
-        >github.com/peda-cos<span class="sr-only"> {a11y.opensInNewTab}</span></a
+        aria-label={`${a11y.githubProfile} ${a11y.opensInNewTab}`}
+        class="underline underline-offset-2 hover:text-[var(--color-accent)]"
+        >github.com/peda-cos</a
       >
     </div>
   </section>
@@ -119,16 +121,16 @@ const { nav, header, hero, value, experience, craft, cta, footer, a11y } = t;
       {
         value.clusters.map((cluster) => (
           <div class="card-lift p-5 rounded-xl bg-[var(--color-surface-raised)] border border-[var(--color-border-subtle)]">
-            <h3 class="font-[family-name:var(--font-ui)] text-xs font-semibold tracking-[0.14em] uppercase text-[var(--color-text-faint)] mb-3">
+            <h3 class="font-[family-name:var(--font-ui)] text-xs font-semibold tracking-[0.14em] uppercase text-[var(--color-text-muted)] mb-3">
               {cluster.name}
             </h3>
-            <div class="flex flex-wrap gap-2">
+            <ul class="flex flex-wrap gap-2 list-none p-0 m-0" role="list">
               {cluster.items.map((item) => (
-                <span class="inline-block px-3 py-1 rounded-full text-xs font-medium font-[family-name:var(--font-ui)] bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-text-muted)]">
+                <li class="inline-block px-3 py-1 rounded-full text-xs font-medium font-[family-name:var(--font-ui)] bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-text-muted)]">
                   {item}
-                </span>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         ))
       }
@@ -173,7 +175,7 @@ const { nav, header, hero, value, experience, craft, cta, footer, a11y } = t;
             <p class="font-[family-name:var(--font-ui)] text-sm font-medium text-[var(--color-text-muted)] mb-3">
               {job.role}
             </p>
-            <ul class="space-y-1.5 list-none p-0 m-0">
+            <ul class="space-y-1.5 list-none p-0 m-0" role="list">
               {job.highlights.map((item) => (
                 <li class="flex gap-2 font-[family-name:var(--font-body)] text-sm text-[var(--color-text-muted)] leading-relaxed">
                   <span
@@ -226,7 +228,7 @@ const { nav, header, hero, value, experience, craft, cta, footer, a11y } = t;
               <h3 class="font-[family-name:var(--font-ui)] text-base font-semibold text-[var(--color-text)]">
                 {school.name}
               </h3>
-              <span class="font-[family-name:var(--font-ui)] text-xs text-[var(--color-text-faint)]">
+              <span class="font-[family-name:var(--font-ui)] text-xs text-[var(--color-text-muted)]">
                 {school.period}
               </span>
             </div>
@@ -237,13 +239,13 @@ const { nav, header, hero, value, experience, craft, cta, footer, a11y } = t;
               {school.description}
             </p>
             {'highlights' in school && school.highlights && (
-              <div class="mt-4 flex flex-wrap gap-2">
+              <ul class="mt-4 flex flex-wrap gap-2 list-none p-0 m-0" role="list">
                 {school.highlights.map((h) => (
-                  <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium font-[family-name:var(--font-ui)] bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-text-muted)]">
+                  <li class="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium font-[family-name:var(--font-ui)] bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-text-muted)]">
                     {h}
-                  </span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             )}
           </article>
         ))
@@ -295,7 +297,7 @@ const { nav, header, hero, value, experience, craft, cta, footer, a11y } = t;
       href="https://astro.build"
       target="_blank"
       rel="noopener noreferrer"
-      class="text-[var(--color-text-muted)] hover:text-[var(--color-accent)]"
+      class="text-[var(--color-text-muted)] underline underline-offset-2 hover:text-[var(--color-accent)]"
       >Astro<span class="sr-only"> {a11y.opensInNewTab}</span></a
     >
     {footer.svelte}
@@ -303,7 +305,7 @@ const { nav, header, hero, value, experience, craft, cta, footer, a11y } = t;
       href="https://svelte.dev"
       target="_blank"
       rel="noopener noreferrer"
-      class="text-[var(--color-text-muted)] hover:text-[var(--color-accent)]"
+      class="text-[var(--color-text-muted)] underline underline-offset-2 hover:text-[var(--color-accent)]"
       >Svelte<span class="sr-only"> {a11y.opensInNewTab}</span></a
     >
     {footer.tailwind}
@@ -311,7 +313,7 @@ const { nav, header, hero, value, experience, craft, cta, footer, a11y } = t;
       href="https://tailwindcss.com"
       target="_blank"
       rel="noopener noreferrer"
-      class="text-[var(--color-text-muted)] hover:text-[var(--color-accent)]"
+      class="text-[var(--color-text-muted)] underline underline-offset-2 hover:text-[var(--color-accent)]"
       >Tailwind<span class="sr-only"> {a11y.opensInNewTab}</span></a
     >
     {footer.period}

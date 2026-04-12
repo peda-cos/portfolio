@@ -3,6 +3,7 @@ export const ptBr = {
     title: 'Pedro Monteiro — Engenheiro Full-Stack',
     description:
       'Engenheiro full-stack com experiência em todo o ciclo de vida de aplicações — da arquitetura ao deploy. Especialista em TypeScript, Go, Angular, React e DevOps.',
+    ogImageAlt: 'Pedro Monteiro — Engenheiro Full-Stack imagem de pré-visualização social',
     jsonLd: {
       name: 'Pedro Monteiro',
       email: 'pedrocsmonteiro@gmail.com',
@@ -27,7 +28,7 @@ export const ptBr = {
   hero: {
     eyebrow: 'Engenheiro de software',
     tagline: 'Construo produtos do início ao fim.',
-    sub: 'Da arquitetura ao deploy — full-stack, orientado a produto e apaixonado por código bem feito.',
+    sub: 'Da arquitetura ao deploy — full-stack, orientado a produto e comprometido com código bem feito.',
   },
   value: {
     eyebrow: 'O que eu faço',
@@ -127,5 +128,7 @@ export const ptBr = {
   a11y: {
     skipToContent: 'Ir para o conteúdo principal',
     opensInNewTab: '(abre em nova aba)',
+    linkedinProfile: 'Perfil no LinkedIn',
+    githubProfile: 'Perfil no GitHub',
   },
 } as const;

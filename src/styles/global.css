@@ -138,7 +138,7 @@
 /* ── Base ─────────────────────────────── */
 
 html {
-  font-size: 16px;
+  font-size: 100%;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
   background-color: var(--color-bg);
@@ -175,7 +175,8 @@ h6 {
 
 a {
   color: var(--color-accent);
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
   transition:
     color var(--duration-fast) var(--ease-gentle),
     opacity var(--duration-fast) var(--ease-gentle);
@@ -204,6 +205,13 @@ a:hover {
 
 /* ── Accessibility utilities ─────────── */
 
+/* Suppress the focus ring on <main> when focus is moved there
+   programmatically by the skip link (focus-visible is not set
+   on programmatic focus, so :focus-visible won't match). */
+main:focus {
+  outline: none;
+}
+
 .skip-link {
   position: absolute;
   top: -100%;
@@ -218,10 +226,12 @@ a:hover {
   text-decoration: none;
 }
 
-.skip-link:focus {
+.skip-link:focus,
+.skip-link:focus-visible {
   top: 0;
   outline: 2px solid var(--color-accent-warm);
   outline-offset: 2px;
+  text-decoration: underline;
 }
 
 .sr-only {
@@ -243,6 +253,7 @@ a:hover {
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
+  min-height: 44px;
   border-radius: 9999px;
   background-color: var(--color-accent);
   color: var(--color-accent-fg);
@@ -266,7 +277,7 @@ a:hover {
   background-color: var(--color-accent-hover);
   color: var(--color-accent-fg);
   opacity: 1;
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-accent-fg);
   outline-offset: 3px;
 }
 

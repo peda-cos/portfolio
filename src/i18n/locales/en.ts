@@ -3,6 +3,7 @@ export const en = {
     title: 'Pedro Monteiro — Full-Stack Engineer',
     description:
       'Full-stack engineer with experience across the entire application lifecycle — from architecture to deployment. Specialising in TypeScript, Go, Angular, React and DevOps.',
+    ogImageAlt: 'Pedro Monteiro — Full-Stack Engineer social preview image',
     jsonLd: {
       name: 'Pedro Monteiro',
       email: 'pedrocsmonteiro@gmail.com',
@@ -27,7 +28,7 @@ export const en = {
   hero: {
     eyebrow: 'Software engineer',
     tagline: 'I build products end to end.',
-    sub: 'From architecture to deployment — full-stack, product-oriented, and obsessed with well-crafted code.',
+    sub: 'From architecture to deployment — full-stack, product-oriented, and focused on well-crafted code.',
   },
   value: {
     eyebrow: 'What I do',
@@ -127,5 +128,7 @@ export const en = {
   a11y: {
     skipToContent: 'Skip to main content',
     opensInNewTab: '(opens in new tab)',
+    linkedinProfile: 'LinkedIn profile',
+    githubProfile: 'GitHub profile',
   },
 } as const;
