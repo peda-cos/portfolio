@@ -6,4 +6,4 @@ export default getViteConfig({
     include: ['src/**/*.test.ts'],
     passWithNoTests: true,
   },
-} as any);
+});

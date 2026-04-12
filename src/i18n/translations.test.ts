@@ -10,7 +10,7 @@ describe('translations structure', () => {
     expect(ptKeys).toEqual(enKeys);
   });
 
-  it.each(['meta', 'nav', 'header', 'hero', 'cta', 'footer', 'a11y'] as const)(
+  it.each(['meta', 'nav', 'header', 'hero', 'value', 'cta', 'footer', 'a11y'] as const)(
     'has matching nested keys in %s for all locales',
     (section) => {
       const ptKeys = Object.keys(translations['pt-br'][section]).sort();

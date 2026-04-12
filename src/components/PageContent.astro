@@ -293,13 +293,16 @@ const { nav, header, hero, value, experience, craft, cta, footer, a11y } = t;
 <script is:inline>
   (function () {
     // Only run when the user hasn't requested reduced motion
-    var mq = window.matchMedia('(prefers-reduced-motion: no-preference)');
+    const mq = window.matchMedia('(prefers-reduced-motion: no-preference)');
     if (!mq.matches) return;
 
-    var targets = document.querySelectorAll('.reveal, .reveal-stagger');
+    // Guard: IntersectionObserver may be absent in legacy environments
+    if (typeof IntersectionObserver === 'undefined') return;
+
+    const targets = document.querySelectorAll('.reveal, .reveal-stagger');
     if (!targets.length) return;
 
-    var observer = new IntersectionObserver(
+    const observer = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {

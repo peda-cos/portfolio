@@ -12,3 +12,6 @@ export const translations = {
   'pt-br': ptBr,
   en: en,
 } as const;
+
+/** The shape of a single locale's translation record. */
+export type Translation = (typeof translations)[Locale];

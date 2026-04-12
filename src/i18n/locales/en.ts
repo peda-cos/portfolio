@@ -19,7 +19,6 @@ export const en = {
   },
   header: {
     name: 'Pedro Monteiro',
-    role: 'Full-Stack Engineer',
     location: 'São Paulo, SP, Brazil',
     email: 'pedrocsmonteiro@gmail.com',
     linkedin: 'linkedin.com/in/pedrocsmonteiro',

@@ -31,7 +31,7 @@ test.describe('PT page (/portfolio/)', () => {
 
   test('language switcher navigates to EN page', async ({ page }) => {
     await page.goto('./');
-    const switcher = page.locator('.language-switcher');
+    const switcher = page.getByRole('link', { name: /Switch to/i });
     await expect(switcher).toBeVisible();
     await switcher.click();
     await page.waitForURL('**/en/**');
@@ -67,7 +67,7 @@ test.describe('EN page (/portfolio/en/)', () => {
 
   test('language switcher navigates to PT page', async ({ page }) => {
     await page.goto('./en/');
-    const switcher = page.locator('.language-switcher');
+    const switcher = page.getByRole('link', { name: /Switch to/i });
     await expect(switcher).toBeVisible();
     await switcher.click();
     // Should navigate back to /portfolio/ (no /en/ in URL)
