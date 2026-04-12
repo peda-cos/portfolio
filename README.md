@@ -1,4 +1,4 @@
-*This project was created by Pedro Monteiro*
+_This project was created by Pedro Monteiro_
 
 # Portfolio
 
@@ -89,6 +89,7 @@ Serves the production build locally for final verification before deployment.
 ### AI Usage
 
 AI tools (GitHub Copilot, OpenCode) were used for:
+
 - Generating initial project scaffolding and boilerplate
 - Drafting and refining CSS styling
 - Writing this documentation (README.md, USER_DOC.md, DEV_DOC.md)

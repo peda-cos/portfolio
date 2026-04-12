@@ -20,7 +20,9 @@ const { nav, header, hero, value, experience, craft, cta, footer, a11y } = t;
   class="fixed top-0 inset-x-0 z-50 flex justify-between items-center px-6 py-4 bg-[var(--color-bg)]/90 backdrop-blur-sm border-b border-[var(--color-border-subtle)] no-print"
   aria-label={nav.ariaLabel}
 >
-  <span class="font-[family-name:var(--font-ui)] text-sm font-medium tracking-wide text-[var(--color-text-muted)]">
+  <span
+    class="font-[family-name:var(--font-ui)] text-sm font-medium tracking-wide text-[var(--color-text-muted)]"
+  >
     {header.name}
   </span>
   <LanguageSwitcher label={nav.switchLang} alternatePath={alternatePath} client:idle />
@@ -28,14 +30,15 @@ const { nav, header, hero, value, experience, craft, cta, footer, a11y } = t;
 
 <!-- ── Main content ────────────────────── -->
 <main id="main-content">
-
   <!-- ── 1. Hero ──────────────────────── -->
   <section
     id="hero"
     aria-labelledby="hero-name"
     class="reveal min-h-dvh flex flex-col justify-center px-6 pt-24 pb-16 max-w-[var(--width-content)] mx-auto"
   >
-    <p class="font-[family-name:var(--font-ui)] text-xs font-medium tracking-[0.18em] uppercase text-[var(--color-accent)] mb-4 opacity-80">
+    <p
+      class="font-[family-name:var(--font-ui)] text-xs font-medium tracking-[0.18em] uppercase text-[var(--color-accent)] mb-4 opacity-80"
+    >
       {hero.eyebrow}
     </p>
     <h1
@@ -44,10 +47,14 @@ const { nav, header, hero, value, experience, craft, cta, footer, a11y } = t;
     >
       {header.name}
     </h1>
-    <p class="font-[family-name:var(--font-body)] text-xl sm:text-2xl font-light text-[var(--color-text-muted)] mb-2 leading-relaxed max-w-xl">
+    <p
+      class="font-[family-name:var(--font-body)] text-xl sm:text-2xl font-light text-[var(--color-text-muted)] mb-2 leading-relaxed max-w-xl"
+    >
       {hero.tagline}
     </p>
-    <p class="font-[family-name:var(--font-body)] text-base text-[var(--color-text-faint)] mb-10 max-w-lg leading-relaxed">
+    <p
+      class="font-[family-name:var(--font-body)] text-base text-[var(--color-text-faint)] mb-10 max-w-lg leading-relaxed"
+    >
       {hero.sub}
     </p>
     <div class="flex flex-wrap gap-3 items-center">
@@ -67,7 +74,9 @@ const { nav, header, hero, value, experience, craft, cta, footer, a11y } = t;
       </a>
     </div>
     <!-- location / contact meta -->
-    <div class="flex flex-wrap gap-x-5 gap-y-1 mt-10 text-xs text-[var(--color-text-faint)] font-[family-name:var(--font-ui)]">
+    <div
+      class="flex flex-wrap gap-x-5 gap-y-1 mt-10 text-xs text-[var(--color-text-faint)] font-[family-name:var(--font-ui)]"
+    >
       <span>{header.location}</span>
       <span aria-hidden="true">·</span>
       <a
@@ -75,7 +84,8 @@ const { nav, header, hero, value, experience, craft, cta, footer, a11y } = t;
         target="_blank"
         rel="noopener noreferrer"
         class="hover:text-[var(--color-accent)]"
-      >github.com/peda-cos<span class="sr-only"> {a11y.opensInNewTab}</span></a>
+        >github.com/peda-cos<span class="sr-only"> {a11y.opensInNewTab}</span></a
+      >
     </div>
   </section>
 
@@ -90,7 +100,9 @@ const { nav, header, hero, value, experience, craft, cta, footer, a11y } = t;
     aria-labelledby="value-heading"
     class="reveal py-20 px-6 max-w-[var(--width-content)] mx-auto"
   >
-    <p class="font-[family-name:var(--font-ui)] text-xs font-medium tracking-[0.18em] uppercase text-[var(--color-accent)] mb-4 opacity-80">
+    <p
+      class="font-[family-name:var(--font-ui)] text-xs font-medium tracking-[0.18em] uppercase text-[var(--color-accent)] mb-4 opacity-80"
+    >
       {value.eyebrow}
     </p>
     <h2
@@ -99,26 +111,30 @@ const { nav, header, hero, value, experience, craft, cta, footer, a11y } = t;
     >
       {value.heading}
     </h2>
-    <p class="font-[family-name:var(--font-body)] text-lg text-[var(--color-text-muted)] mb-10 max-w-2xl leading-relaxed">
+    <p
+      class="font-[family-name:var(--font-body)] text-lg text-[var(--color-text-muted)] mb-10 max-w-2xl leading-relaxed"
+    >
       {value.summary}
     </p>
 
     <!-- Skill clusters -->
     <div class="reveal-stagger grid grid-cols-1 sm:grid-cols-2 gap-6">
-      {value.clusters.map((cluster) => (
-        <div class="card-lift p-5 rounded-xl bg-[var(--color-surface-raised)] border border-[var(--color-border-subtle)]">
-          <h3 class="font-[family-name:var(--font-ui)] text-xs font-semibold tracking-[0.14em] uppercase text-[var(--color-text-faint)] mb-3">
-            {cluster.name}
-          </h3>
-          <div class="flex flex-wrap gap-2">
-            {cluster.items.map((item) => (
-              <span class="inline-block px-3 py-1 rounded-full text-xs font-medium font-[family-name:var(--font-ui)] bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-text-muted)]">
-                {item}
-              </span>
-            ))}
+      {
+        value.clusters.map((cluster) => (
+          <div class="card-lift p-5 rounded-xl bg-[var(--color-surface-raised)] border border-[var(--color-border-subtle)]">
+            <h3 class="font-[family-name:var(--font-ui)] text-xs font-semibold tracking-[0.14em] uppercase text-[var(--color-text-faint)] mb-3">
+              {cluster.name}
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              {cluster.items.map((item) => (
+                <span class="inline-block px-3 py-1 rounded-full text-xs font-medium font-[family-name:var(--font-ui)] bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-text-muted)]">
+                  {item}
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
+        ))
+      }
     </div>
   </section>
 
@@ -133,7 +149,9 @@ const { nav, header, hero, value, experience, craft, cta, footer, a11y } = t;
     aria-labelledby="experience-heading"
     class="reveal py-20 px-6 max-w-[var(--width-content)] mx-auto"
   >
-    <p class="font-[family-name:var(--font-ui)] text-xs font-medium tracking-[0.18em] uppercase text-[var(--color-accent)] mb-4 opacity-80">
+    <p
+      class="font-[family-name:var(--font-ui)] text-xs font-medium tracking-[0.18em] uppercase text-[var(--color-accent)] mb-4 opacity-80"
+    >
       {experience.eyebrow}
     </p>
     <h2
@@ -144,29 +162,34 @@ const { nav, header, hero, value, experience, craft, cta, footer, a11y } = t;
     </h2>
 
     <div class="space-y-10">
-      {experience.positions.map((job) => (
-        <article class="group relative pl-5 border-l-2 border-[var(--color-border)] transition-colors duration-[var(--duration-base)] hover:border-[var(--color-accent)] motion-reduce:transition-none">
-          <div class="flex flex-wrap justify-between items-baseline gap-2 mb-1">
-            <h3 class="font-[family-name:var(--font-ui)] text-base font-semibold text-[var(--color-text)]">
-              {job.company}
-            </h3>
-            <span class="font-[family-name:var(--font-ui)] text-xs text-[var(--color-text-faint)] whitespace-nowrap">
-              {job.period}
-            </span>
-          </div>
-          <p class="font-[family-name:var(--font-ui)] text-sm font-medium text-[var(--color-text-muted)] mb-3">
-            {job.role}
-          </p>
-          <ul class="space-y-1.5 list-none p-0 m-0">
-            {job.highlights.map((item) => (
-              <li class="flex gap-2 font-[family-name:var(--font-body)] text-sm text-[var(--color-text-muted)] leading-relaxed">
-                <span class="mt-1.5 shrink-0 w-1 h-1 rounded-full bg-[var(--color-accent)] opacity-60" aria-hidden="true"></span>
-                {item}
-              </li>
-            ))}
-          </ul>
-        </article>
-      ))}
+      {
+        experience.positions.map((job) => (
+          <article class="group relative pl-5 border-l-2 border-[var(--color-border)] transition-colors duration-[var(--duration-base)] hover:border-[var(--color-accent)] motion-reduce:transition-none">
+            <div class="flex flex-wrap justify-between items-baseline gap-2 mb-1">
+              <h3 class="font-[family-name:var(--font-ui)] text-base font-semibold text-[var(--color-text)]">
+                {job.company}
+              </h3>
+              <span class="font-[family-name:var(--font-ui)] text-xs text-[var(--color-text-faint)] whitespace-nowrap">
+                {job.period}
+              </span>
+            </div>
+            <p class="font-[family-name:var(--font-ui)] text-sm font-medium text-[var(--color-text-muted)] mb-3">
+              {job.role}
+            </p>
+            <ul class="space-y-1.5 list-none p-0 m-0">
+              {job.highlights.map((item) => (
+                <li class="flex gap-2 font-[family-name:var(--font-body)] text-sm text-[var(--color-text-muted)] leading-relaxed">
+                  <span
+                    class="mt-1.5 shrink-0 w-1 h-1 rounded-full bg-[var(--color-accent)] opacity-60"
+                    aria-hidden="true"
+                  />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
     </div>
   </section>
 
@@ -181,7 +204,9 @@ const { nav, header, hero, value, experience, craft, cta, footer, a11y } = t;
     aria-labelledby="craft-heading"
     class="reveal py-20 px-6 max-w-[var(--width-content)] mx-auto"
   >
-    <p class="font-[family-name:var(--font-ui)] text-xs font-medium tracking-[0.18em] uppercase text-[var(--color-accent)] mb-4 opacity-80">
+    <p
+      class="font-[family-name:var(--font-ui)] text-xs font-medium tracking-[0.18em] uppercase text-[var(--color-accent)] mb-4 opacity-80"
+    >
       {craft.eyebrow}
     </p>
     <h2
@@ -190,38 +215,42 @@ const { nav, header, hero, value, experience, craft, cta, footer, a11y } = t;
     >
       {craft.heading}
     </h2>
-    <p class="font-[family-name:var(--font-body)] text-lg text-[var(--color-text-muted)] mb-12 max-w-2xl leading-relaxed">
+    <p
+      class="font-[family-name:var(--font-body)] text-lg text-[var(--color-text-muted)] mb-12 max-w-2xl leading-relaxed"
+    >
       {craft.narrative}
     </p>
 
     <div class="space-y-8">
-      {craft.institutions.map((school) => (
-        <article class="card-lift p-6 rounded-xl bg-[var(--color-surface-raised)] border border-[var(--color-border-subtle)]">
-          <div class="flex flex-wrap justify-between items-baseline gap-2 mb-1">
-            <h3 class="font-[family-name:var(--font-ui)] text-base font-semibold text-[var(--color-text)]">
-              {school.name}
-            </h3>
-            <span class="font-[family-name:var(--font-ui)] text-xs text-[var(--color-text-faint)]">
-              {school.period}
-            </span>
-          </div>
-          <p class="font-[family-name:var(--font-ui)] text-sm font-medium text-[var(--color-text-muted)] mb-3">
-            {school.degree}
-          </p>
-          <p class="font-[family-name:var(--font-body)] text-sm text-[var(--color-text-muted)] leading-relaxed">
-            {school.description}
-          </p>
-          {'highlights' in school && school.highlights && (
-            <div class="mt-4 flex flex-wrap gap-2">
-              {school.highlights.map((h) => (
-                <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium font-[family-name:var(--font-ui)] bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-text-muted)]">
-                  {h}
-                </span>
-              ))}
+      {
+        craft.institutions.map((school) => (
+          <article class="card-lift p-6 rounded-xl bg-[var(--color-surface-raised)] border border-[var(--color-border-subtle)]">
+            <div class="flex flex-wrap justify-between items-baseline gap-2 mb-1">
+              <h3 class="font-[family-name:var(--font-ui)] text-base font-semibold text-[var(--color-text)]">
+                {school.name}
+              </h3>
+              <span class="font-[family-name:var(--font-ui)] text-xs text-[var(--color-text-faint)]">
+                {school.period}
+              </span>
             </div>
-          )}
-        </article>
-      ))}
+            <p class="font-[family-name:var(--font-ui)] text-sm font-medium text-[var(--color-text-muted)] mb-3">
+              {school.degree}
+            </p>
+            <p class="font-[family-name:var(--font-body)] text-sm text-[var(--color-text-muted)] leading-relaxed">
+              {school.description}
+            </p>
+            {'highlights' in school && school.highlights && (
+              <div class="mt-4 flex flex-wrap gap-2">
+                {school.highlights.map((h) => (
+                  <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium font-[family-name:var(--font-ui)] bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-text-muted)]">
+                    {h}
+                  </span>
+                ))}
+              </div>
+            )}
+          </article>
+        ))
+      }
     </div>
   </section>
 
@@ -236,7 +265,9 @@ const { nav, header, hero, value, experience, craft, cta, footer, a11y } = t;
     aria-labelledby="cta-heading"
     class="reveal py-24 px-6 max-w-[var(--width-content)] mx-auto text-center"
   >
-    <p class="font-[family-name:var(--font-ui)] text-xs font-medium tracking-[0.18em] uppercase text-[var(--color-accent)] mb-4 opacity-80">
+    <p
+      class="font-[family-name:var(--font-ui)] text-xs font-medium tracking-[0.18em] uppercase text-[var(--color-accent)] mb-4 opacity-80"
+    >
       {cta.eyebrow}
     </p>
     <h2
@@ -245,7 +276,9 @@ const { nav, header, hero, value, experience, craft, cta, footer, a11y } = t;
     >
       {cta.heading}
     </h2>
-    <p class="font-[family-name:var(--font-body)] text-lg text-[var(--color-text-muted)] mb-10 max-w-md mx-auto leading-relaxed">
+    <p
+      class="font-[family-name:var(--font-body)] text-lg text-[var(--color-text-muted)] mb-10 max-w-md mx-auto leading-relaxed"
+    >
       {cta.body}
     </p>
     <a
@@ -258,7 +291,6 @@ const { nav, header, hero, value, experience, craft, cta, footer, a11y } = t;
       {header.email}
     </p>
   </section>
-
 </main>
 
 <!-- ── Footer ──────────────────────────── -->
@@ -270,21 +302,24 @@ const { nav, header, hero, value, experience, craft, cta, footer, a11y } = t;
       target="_blank"
       rel="noopener noreferrer"
       class="text-[var(--color-text-muted)] hover:text-[var(--color-accent)]"
-    >Astro<span class="sr-only"> {a11y.opensInNewTab}</span></a>
+      >Astro<span class="sr-only"> {a11y.opensInNewTab}</span></a
+    >
     {footer.svelte}
     <a
       href="https://svelte.dev"
       target="_blank"
       rel="noopener noreferrer"
       class="text-[var(--color-text-muted)] hover:text-[var(--color-accent)]"
-    >Svelte<span class="sr-only"> {a11y.opensInNewTab}</span></a>
+      >Svelte<span class="sr-only"> {a11y.opensInNewTab}</span></a
+    >
     {footer.tailwind}
     <a
       href="https://tailwindcss.com"
       target="_blank"
       rel="noopener noreferrer"
       class="text-[var(--color-text-muted)] hover:text-[var(--color-accent)]"
-    >Tailwind<span class="sr-only"> {a11y.opensInNewTab}</span></a>
+      >Tailwind<span class="sr-only"> {a11y.opensInNewTab}</span></a
+    >
     {footer.period}
   </p>
 </footer>
@@ -311,7 +346,7 @@ const { nav, header, hero, value, experience, craft, cta, footer, a11y } = t;
           }
         });
       },
-      { threshold: 0.12 }
+      { threshold: 0.12 },
     );
 
     targets.forEach(function (el) {

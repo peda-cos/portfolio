@@ -2,11 +2,11 @@
 
 ## Prerequisites
 
-| Tool | Version | Purpose |
-|------|---------|---------|
-| Node.js | >= 22.x | Runtime for Astro build toolchain (Astro 6 requires Node 22+) |
-| npm | >= 10.x (bundled with Node) | Package manager |
-| Git | any recent | Version control |
+| Tool    | Version                     | Purpose                                                       |
+| ------- | --------------------------- | ------------------------------------------------------------- |
+| Node.js | >= 22.x                     | Runtime for Astro build toolchain (Astro 6 requires Node 22+) |
+| npm     | >= 10.x (bundled with Node) | Package manager                                               |
+| Git     | any recent                  | Version control                                               |
 
 No additional system dependencies, Docker, databases, or cloud credentials required.
 
@@ -36,34 +36,34 @@ The dev server starts at `http://localhost:4321` with hot module replacement. No
 
 ### Configuration Files
 
-| File | Purpose |
-|------|---------|
-| `astro.config.mjs` | Astro configuration: site URL, integrations (Svelte, Sitemap), i18n locales, build options |
-| `tsconfig.json` | TypeScript strict mode, extends Astro's strict preset |
-| `svelte.config.js` | Svelte preprocessor config (Vite) |
-| `eslint.config.js` | ESLint flat config with TypeScript + Astro rules |
-| `.prettierrc` | Prettier config (single quotes, semicolons, trailing commas, 100 print width) |
-| `vitest.config.ts` | Vitest unit test configuration |
-| `playwright.config.ts` | Playwright E2E test configuration |
-| `package.json` | Dependencies and npm scripts |
+| File                   | Purpose                                                                                    |
+| ---------------------- | ------------------------------------------------------------------------------------------ |
+| `astro.config.mjs`     | Astro configuration: site URL, integrations (Svelte, Sitemap), i18n locales, build options |
+| `tsconfig.json`        | TypeScript strict mode, extends Astro's strict preset                                      |
+| `svelte.config.js`     | Svelte preprocessor config (Vite)                                                          |
+| `eslint.config.js`     | ESLint flat config with TypeScript + Astro rules                                           |
+| `.prettierrc`          | Prettier config (single quotes, semicolons, trailing commas, 100 print width)              |
+| `vitest.config.ts`     | Vitest unit test configuration                                                             |
+| `playwright.config.ts` | Playwright E2E test configuration                                                          |
+| `package.json`         | Dependencies and npm scripts                                                               |
 
 ## Build and Launch
 
 ### npm Scripts
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start Astro dev server with HMR (`http://localhost:4321`) |
-| `npm run build` | Build static site to `dist/` |
-| `npm run preview` | Serve production build locally |
-| `npm run check` | Run Astro type checking (`astro check`) |
-| `npm test` | Run Vitest unit tests (30 tests) |
-| `npm run test:watch` | Run Vitest in watch mode |
-| `npm run test:e2e` | Run Playwright E2E smoke tests (10 tests) |
-| `npm run lint` | Run ESLint on `src/` |
-| `npm run format` | Format all source files with Prettier |
-| `npm run format:check` | Check formatting without writing changes |
-| `npm run astro` | Run Astro CLI directly (e.g., `npm run astro -- --help`) |
+| Command                | Description                                               |
+| ---------------------- | --------------------------------------------------------- |
+| `npm run dev`          | Start Astro dev server with HMR (`http://localhost:4321`) |
+| `npm run build`        | Build static site to `dist/`                              |
+| `npm run preview`      | Serve production build locally                            |
+| `npm run check`        | Run Astro type checking (`astro check`)                   |
+| `npm test`             | Run Vitest unit tests (30 tests)                          |
+| `npm run test:watch`   | Run Vitest in watch mode                                  |
+| `npm run test:e2e`     | Run Playwright E2E smoke tests (10 tests)                 |
+| `npm run lint`         | Run ESLint on `src/`                                      |
+| `npm run format`       | Format all source files with Prettier                     |
+| `npm run format:check` | Check formatting without writing changes                  |
+| `npm run astro`        | Run Astro CLI directly (e.g., `npm run astro -- --help`)  |
 
 ### Build Process
 
@@ -104,6 +104,7 @@ npm run test:watch      # Watch mode for development
 ```
 
 Test files live alongside source files:
+
 - `src/i18n/utils.test.ts` — 16 tests for all exported utility functions
 - `src/i18n/translations.test.ts` — 14 structural parity tests (locale key consistency)
 
@@ -142,6 +143,7 @@ npm run lint && npm run format:check && npm run check && npm test && npm run bui
 ### Commit Messages
 
 Conventional Commits in Portuguese:
+
 - `feat(scope):` — new feature
 - `fix(scope):` — bug fix
 - `refactor(scope):` — code restructuring without behavior change
@@ -196,14 +198,14 @@ This project does **not** use Docker, Docker Compose, or any containerization. I
 
 All site content is stored as **source code** — there is no database, CMS, or external data source.
 
-| Data | Location | Format |
-|------|----------|--------|
-| Resume text (both locales) | `src/i18n/locales/pt-br.ts`, `src/i18n/locales/en.ts` | TypeScript object literal |
-| Page structure / layout | `src/components/PageContent.astro` | Astro template |
-| Page wrappers | `src/pages/index.astro`, `src/pages/en/index.astro` | Astro thin wrappers (~13 lines) |
-| HTML shell, SEO metadata | `src/layouts/BaseLayout.astro` | Astro layout |
-| Styling | `src/styles/global.css` | CSS custom properties |
-| Static assets (favicon, OG image) | `public/` | Binary files |
+| Data                              | Location                                              | Format                          |
+| --------------------------------- | ----------------------------------------------------- | ------------------------------- |
+| Resume text (both locales)        | `src/i18n/locales/pt-br.ts`, `src/i18n/locales/en.ts` | TypeScript object literal       |
+| Page structure / layout           | `src/components/PageContent.astro`                    | Astro template                  |
+| Page wrappers                     | `src/pages/index.astro`, `src/pages/en/index.astro`   | Astro thin wrappers (~13 lines) |
+| HTML shell, SEO metadata          | `src/layouts/BaseLayout.astro`                        | Astro layout                    |
+| Styling                           | `src/styles/global.css`                               | CSS custom properties           |
+| Static assets (favicon, OG image) | `public/`                                             | Binary files                    |
 
 ### How persistence works
 
@@ -263,26 +265,26 @@ Run `npm audit` periodically. The project currently has **0 vulnerabilities**.
 
 ### Build Output Sizes
 
-| Asset | Size |
-|-------|------|
-| `dist/index.html` (PT) | ~27.9 KB |
-| `dist/en/index.html` (EN) | ~27.5 KB |
-| Inline CSS (per page) | ~14.9 KB |
-| `client.svelte.*.js` | ~22.4 KB (9.1 KB gzip) |
-| `dm-sans-latin.woff2` | ~39.7 KB |
-| `source-serif-4-latin.woff2` | ~78.5 KB |
-| Total `dist/` | ~268 KB |
+| Asset                        | Size                   |
+| ---------------------------- | ---------------------- |
+| `dist/index.html` (PT)       | ~27.9 KB               |
+| `dist/en/index.html` (EN)    | ~27.5 KB               |
+| Inline CSS (per page)        | ~14.9 KB               |
+| `client.svelte.*.js`         | ~22.4 KB (9.1 KB gzip) |
+| `dm-sans-latin.woff2`        | ~39.7 KB               |
+| `source-serif-4-latin.woff2` | ~78.5 KB               |
+| Total `dist/`                | ~268 KB                |
 
 ### Font Loading Strategy
 
 The site uses 4 self-hosted font files (2 families × 2 subsets each):
 
-| Font | Subset | Loaded via |
-|------|--------|------------|
-| DM Sans — latin | `@font-face` + `<link rel="preload">` | Network request |
-| DM Sans — latin-ext | `@font-face` (Vite-inlined as base64 data URI) | Already in CSS |
-| Source Serif 4 — latin | `@font-face` + `<link rel="preload">` | Network request |
-| Source Serif 4 — latin-ext | `@font-face` (Vite-inlined as base64 data URI) | Already in CSS |
+| Font                       | Subset                                         | Loaded via      |
+| -------------------------- | ---------------------------------------------- | --------------- |
+| DM Sans — latin            | `@font-face` + `<link rel="preload">`          | Network request |
+| DM Sans — latin-ext        | `@font-face` (Vite-inlined as base64 data URI) | Already in CSS  |
+| Source Serif 4 — latin     | `@font-face` + `<link rel="preload">`          | Network request |
+| Source Serif 4 — latin-ext | `@font-face` (Vite-inlined as base64 data URI) | Already in CSS  |
 
 - **`font-display: optional`** — prevents layout shift (FOUT/FOIT). With preload hints, the latin subsets arrive fast enough to render with custom fonts on most connections. If they don't arrive in time, the browser uses the system fallback and does not swap mid-render.
 - **`unicode-range` subsetting** — latin and latin-ext `@font-face` rules have non-overlapping ranges. The browser only downloads the latin-ext subset if the page contains characters outside the basic Latin range (e.g., accented Portuguese characters like ã, ç, é). The small overlap on combining marks (U+0304, U+0308, U+0329) is standard practice from Google Fonts.
