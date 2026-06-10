@@ -1,0 +1,70 @@
+---
+import type { Translation } from '../i18n/translations';
+
+interface Props {
+  t: Translation;
+  alternatePath: string;
+}
+
+const { t } = Astro.props;
+const { header, hero, cta, a11y } = t;
+const { alternatePath } = Astro.props;
+---
+
+<section
+  id="hero"
+  aria-labelledby="hero-name"
+  class="reveal min-h-dvh flex flex-col justify-center px-6 pt-24 pb-16 max-w-[var(--width-content)] mx-auto"
+>
+  <p
+    class="font-[family-name:var(--font-ui)] text-xs font-medium tracking-[0.18em] uppercase text-[var(--color-accent)] mb-4 opacity-80"
+  >
+    {hero.eyebrow}
+  </p>
+  <h1
+    id="hero-name"
+    class="font-[family-name:var(--font-ui)] text-4xl sm:text-5xl font-bold tracking-tight text-[var(--color-text)] mb-5 leading-[1.1]"
+  >
+    {header.name}
+  </h1>
+  <p
+    class="font-[family-name:var(--font-body)] text-xl sm:text-2xl font-light text-[var(--color-text-muted)] mb-2 leading-relaxed max-w-xl"
+  >
+    {hero.tagline}
+  </p>
+  <p
+    class="font-[family-name:var(--font-body)] text-base text-[var(--color-text-faint)] mb-10 max-w-lg leading-relaxed"
+  >
+    {hero.sub}
+  </p>
+  <div class="flex flex-wrap gap-3 items-center">
+    <a href={`mailto:${header.email}`} class="btn-primary">
+      {cta.primary}
+    </a>
+    <a
+      href={`https://${header.linkedin}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`${a11y.linkedinProfile} ${a11y.opensInNewTab}`}
+      class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[var(--color-border)] text-[var(--color-text-muted)] font-[family-name:var(--font-ui)] text-sm font-medium tracking-wide no-underline transition-colors duration-[var(--duration-base)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] motion-reduce:transition-none"
+    >
+      LinkedIn
+    </a>
+  </div>
+  <!-- location / contact meta -->
+  <div
+    class="flex flex-wrap gap-x-5 gap-y-1 mt-10 text-xs text-[var(--color-text-faint)] font-[family-name:var(--font-ui)]"
+  >
+    <span>{header.location}</span>
+    <span aria-hidden="true">·</span>
+    <a
+      href={`https://${header.github}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`${a11y.githubProfile} ${a11y.opensInNewTab}`}
+      class="underline underline-offset-2 hover:text-[var(--color-accent)]"
+    >
+      {header.github}
+    </a>
+  </div>
+</section>

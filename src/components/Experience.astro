@@ -1,0 +1,59 @@
+---
+import type { Translation } from '../i18n/translations';
+
+interface Props {
+  t: Translation;
+}
+
+const { t } = Astro.props;
+const { experience } = t;
+---
+
+<section
+  id="experience"
+  aria-labelledby="experience-heading"
+  class="reveal py-20 px-6 max-w-[var(--width-content)] mx-auto"
+>
+  <p
+    class="font-[family-name:var(--font-ui)] text-xs font-medium tracking-[0.18em] uppercase text-[var(--color-accent)] mb-4 opacity-80"
+  >
+    {experience.eyebrow}
+  </p>
+  <h2
+    id="experience-heading"
+    class="font-[family-name:var(--font-ui)] text-2xl sm:text-3xl font-semibold text-[var(--color-text)] mb-12 tracking-tight"
+  >
+    {experience.heading}
+  </h2>
+
+  <div class="space-y-10">
+    {
+      experience.positions.map((job) => (
+        <article class="group relative pl-5 border-l-2 border-[var(--color-border)] transition-colors duration-[var(--duration-base)] hover:border-[var(--color-accent)] motion-reduce:transition-none">
+          <div class="flex flex-wrap justify-between items-baseline gap-2 mb-1">
+            <h3 class="font-[family-name:var(--font-ui)] text-base font-semibold text-[var(--color-text)]">
+              {job.company}
+            </h3>
+            <span class="font-[family-name:var(--font-ui)] text-xs text-[var(--color-text-faint)] whitespace-nowrap">
+              {job.period}
+            </span>
+          </div>
+          <p class="font-[family-name:var(--font-ui)] text-sm font-medium text-[var(--color-text-muted)] mb-3">
+            {job.role}
+          </p>
+          <ul class="space-y-1.5 list-none p-0 m-0" role="list">
+            {job.highlights.map((item) => (
+              <li class="flex gap-2 font-[family-name:var(--font-body)] text-sm text-[var(--color-text-muted)] leading-relaxed">
+                <span
+                  class="mt-1.5 shrink-0 w-1 h-1 rounded-full bg-[var(--color-accent)] opacity-60"
+                  aria-hidden="true"
+                />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))
+    }
+  </div>
+</section>

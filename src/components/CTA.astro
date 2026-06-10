@@ -1,0 +1,39 @@
+---
+import type { Translation } from '../i18n/translations';
+
+interface Props {
+  t: Translation;
+}
+
+const { t } = Astro.props;
+const { cta, header } = t;
+---
+
+<section
+  id="contact"
+  aria-labelledby="cta-heading"
+  class="reveal py-24 px-6 max-w-[var(--width-content)] mx-auto text-center"
+>
+  <p
+    class="font-[family-name:var(--font-ui)] text-xs font-medium tracking-[0.18em] uppercase text-[var(--color-accent)] mb-4 opacity-80"
+  >
+    {cta.eyebrow}
+  </p>
+  <h2
+    id="cta-heading"
+    class="font-[family-name:var(--font-ui)] text-3xl sm:text-4xl font-semibold text-[var(--color-text)] mb-5 tracking-tight"
+  >
+    {cta.heading}
+  </h2>
+  <p
+    class="font-[family-name:var(--font-body)] text-lg text-[var(--color-text-muted)] mb-10 max-w-md mx-auto leading-relaxed"
+  >
+    {cta.body}
+  </p>
+  <a href={`mailto:${header.email}`} class="btn-primary px-8 py-4 text-base font-semibold">
+    {cta.action}
+  </a>
+  <p class="mt-6 text-xs text-[var(--color-text-faint)] font-[family-name:var(--font-ui)]">
+    {header.email}
+  </p>
+</section>

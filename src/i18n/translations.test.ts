@@ -19,12 +19,24 @@ describe('translations structure', () => {
     },
   );
 
-  it('has no undefined values at depth 1', () => {
-    for (const locale of locales) {
-      const values = Object.values(translations[locale]);
-      for (const value of values) {
-        expect(value).toBeDefined();
+  it('has no empty or undefined values recursively for all locales', () => {
+    const checkValue = (val: any, path: string = '') => {
+      expect(val, `Value at ${path} should be defined`).toBeDefined();
+      expect(val, `Value at ${path} should not be null`).not.toBeNull();
+
+      if (typeof val === 'string') {
+        expect(val.trim(), `Value at ${path} should not be empty`).not.toBe('');
       }
+
+      if (typeof val === 'object' && val !== null) {
+        Object.entries(val).forEach(([key, v]) => {
+          checkValue(v, `${path}.${key}`);
+        });
+      }
+    };
+
+    for (const locale of locales) {
+      checkValue(translations[locale], locale);
     }
   });
 

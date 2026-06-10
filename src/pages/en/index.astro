@@ -1,13 +1,12 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageContent from '../../components/PageContent.astro';
-import { getBase } from '../../i18n/utils';
+import { getAlternatePath } from '../../i18n/utils';
 import type { Locale } from '../../i18n/translations';
 
 const lang: Locale = 'en';
-const base = getBase();
 ---
 
 <BaseLayout lang={lang}>
-  <PageContent lang={lang} alternatePath={base} />
+  <PageContent lang={lang} alternatePath={getAlternatePath(lang)} />
 </BaseLayout>

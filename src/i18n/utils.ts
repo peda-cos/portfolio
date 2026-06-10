@@ -44,5 +44,20 @@ export function useTranslations(lang: Locale): Translation {
  * getHtmlLang('en'); // 'en'
  */
 export function getHtmlLang(locale: Locale): string {
-  return locale === 'pt-br' ? 'pt-BR' : 'en';
+  const map: Record<Locale, string> = {
+    'pt-br': 'pt-BR',
+    en: 'en',
+  };
+  return map[locale];
+}
+
+/**
+ * Returns the path to the alternate language version of the current page.
+ *
+ * @param locale - The current locale.
+ * @returns The path to the alternate locale's home page.
+ */
+export function getAlternatePath(locale: Locale): string {
+  const base = getBase();
+  return locale === 'en' ? base : `${base}en/`;
 }

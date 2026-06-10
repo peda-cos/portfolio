@@ -1,0 +1,40 @@
+---
+import type { Translation } from '../i18n/translations';
+
+interface Props {
+  t: Translation;
+}
+
+const { t } = Astro.props;
+const { footer, a11y } = t;
+---
+
+<footer class="py-8 px-6 border-t border-[var(--color-border-subtle)] text-center">
+  <p class="font-[family-name:var(--font-ui)] text-xs text-[var(--color-text-faint)]">
+    {footer.builtWith}
+    <a
+      href="https://astro.build"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-[var(--color-text-muted)] underline underline-offset-2 hover:text-[var(--color-accent)]"
+      >Astro<span class="sr-only"> {a11y.opensInNewTab}</span></a
+    >
+    {footer.svelte}
+    <a
+      href="https://svelte.dev"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-[var(--color-text-muted)] underline underline-offset-2 hover:text-[var(--color-accent)]"
+      >Svelte<span class="sr-only"> {a11y.opensInNewTab}</span></a
+    >
+    {footer.tailwind}
+    <a
+      href="https://tailwindcss.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-[var(--color-text-muted)] underline underline-offset-2 hover:text-[var(--color-accent)]"
+      >Tailwind<span class="sr-only"> {a11y.opensInNewTab}</span></a
+    >
+    {footer.period}
+  </p>
+</footer>
