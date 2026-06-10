@@ -20,7 +20,7 @@ describe('translations structure', () => {
   );
 
   it('has no empty or undefined values recursively for all locales', () => {
-    const checkValue = (val: any, path: string = '') => {
+    const checkValue = (val: unknown, path: string = '') => {
       expect(val, `Value at ${path} should be defined`).toBeDefined();
       expect(val, `Value at ${path} should not be null`).not.toBeNull();
 

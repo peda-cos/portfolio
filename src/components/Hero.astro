@@ -3,12 +3,10 @@ import type { Translation } from '../i18n/translations';
 
 interface Props {
   t: Translation;
-  alternatePath: string;
 }
 
 const { t } = Astro.props;
 const { header, hero, cta, a11y } = t;
-const { alternatePath } = Astro.props;
 ---
 
 <section
