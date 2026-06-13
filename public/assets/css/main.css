@@ -509,11 +509,6 @@ main:focus {
   margin-bottom: var(--spacing-10);
 }
 
-.hero__actions .btn-primary {
-  box-shadow: 0 10px 15px -3px color-mix(in oklab, var(--color-sage-500) 20%, transparent),
-    0 4px 6px -4px color-mix(in oklab, var(--color-sage-500) 20%, transparent);
-}
-
 .hero__social-link {
   display: inline-flex;
   align-items: center;
@@ -1045,13 +1040,9 @@ main:focus {
   font-size: 1rem;
   font-weight: 700;
   text-decoration: none;
-  box-shadow: 0 20px 25px -5px color-mix(in oklab, var(--color-sage-950) 30%, transparent),
-    0 8px 10px -6px color-mix(in oklab, var(--color-sage-950) 30%, transparent);
-  transition: transform var(--duration-base) var(--ease-gentle);
 }
 
 .cta-section__action:hover {
-  transform: scale(1.05);
   opacity: 1;
 }
 
@@ -1109,58 +1100,36 @@ main:focus {
 @media (prefers-reduced-motion: no-preference) {
   .reveal {
     opacity: 0;
-    transform: translateY(18px);
-    transition:
-      opacity var(--duration-slow) var(--ease-emerge),
-      transform var(--duration-slow) var(--ease-emerge);
+    transition: opacity var(--duration-slow) var(--ease-emerge);
   }
 
   .reveal.is-visible {
     opacity: 1;
-    transform: translateY(0);
   }
 
   .reveal-stagger > * {
     opacity: 0;
-    transform: translateY(14px);
-    transition:
-      opacity var(--duration-slow) var(--ease-emerge),
-      transform var(--duration-slow) var(--ease-emerge);
+    transition: opacity var(--duration-slow) var(--ease-emerge);
   }
 
   .reveal-stagger.is-visible > *:nth-child(1) {
     opacity: 1;
-    transform: translateY(0);
     transition-delay: 0ms;
   }
 
   .reveal-stagger.is-visible > *:nth-child(2) {
     opacity: 1;
-    transform: translateY(0);
     transition-delay: 80ms;
   }
 
   .reveal-stagger.is-visible > *:nth-child(3) {
     opacity: 1;
-    transform: translateY(0);
     transition-delay: 160ms;
   }
 
   .reveal-stagger.is-visible > *:nth-child(4) {
     opacity: 1;
-    transform: translateY(0);
     transition-delay: 240ms;
-  }
-
-  .card-lift {
-    transition:
-      transform var(--duration-base) var(--ease-gentle),
-      box-shadow var(--duration-base) var(--ease-gentle);
-  }
-
-  .card-lift:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 24px -8px oklch(20% 0.02 80 / 0.12);
   }
 }
 
@@ -1194,6 +1163,5 @@ main:focus {
   .reveal,
   .reveal-stagger > * {
     opacity: 1 !important;
-    transform: none !important;
   }
 }
