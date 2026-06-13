@@ -14,7 +14,7 @@ const sharedTabOrder = [
   // Skip link
   '.skip-link',
   // Language switcher
-  'nav [aria-label^="Switch to"]',
+  '.hero__language',
   // Hero CTA and social links
   '#hero a[href^="mailto:"]',
   '#hero a[href*="linkedin"]',
