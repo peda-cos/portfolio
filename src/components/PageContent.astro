@@ -6,6 +6,7 @@ import Experience from './Experience.astro';
 import Craft from './Craft.astro';
 import CTA from './CTA.astro';
 import Footer from './Footer.astro';
+import ShapeDivider from './ShapeDivider.astro';
 import { useTranslations } from '../i18n/utils';
 import type { Locale } from '../i18n/translations';
 
@@ -23,7 +24,7 @@ const { nav, header } = t;
 
 <!-- ── Site nav ────────────────────────── -->
 <nav
-  class="fixed top-0 inset-x-0 z-50 flex justify-between items-center px-6 py-4 bg-[var(--color-bg)]/90 backdrop-blur-sm border-b border-[var(--color-border-subtle)] no-print"
+  class="fixed top-0 inset-x-0 z-50 flex justify-between items-center px-6 py-4 bg-[var(--color-surface)]/85 backdrop-blur-md border-b border-[var(--color-border-subtle)] no-print"
   aria-label={nav.ariaLabel}
 >
   <span
@@ -38,31 +39,19 @@ const { nav, header } = t;
 <main id="main-content" tabindex="-1">
   <Hero t={t} />
 
-  <!-- ── Divider ───────────────────────── -->
-  <div class="max-w-[var(--width-content)] mx-auto px-6">
-    <hr class="border-none h-px bg-[var(--color-border)]" />
-  </div>
+  <ShapeDivider variant="wave" fill="var(--color-value-bg)" />
 
   <Value t={t} />
 
-  <!-- ── Divider ───────────────────────── -->
-  <div class="max-w-[var(--width-content)] mx-auto px-6">
-    <hr class="border-none h-px bg-[var(--color-border)]" />
-  </div>
+  <ShapeDivider variant="cloud" fill="var(--color-experience-bg)" />
 
   <Experience t={t} />
 
-  <!-- ── Divider ───────────────────────── -->
-  <div class="max-w-[var(--width-content)] mx-auto px-6">
-    <hr class="border-none h-px bg-[var(--color-border)]" />
-  </div>
+  <ShapeDivider variant="curve" fill="var(--color-craft-bg)" />
 
   <Craft t={t} />
 
-  <!-- ── Divider ───────────────────────── -->
-  <div class="max-w-[var(--width-content)] mx-auto px-6">
-    <hr class="border-none h-px bg-[var(--color-border)]" />
-  </div>
+  <ShapeDivider variant="wave" fill="var(--color-cta-bg)" flip />
 
   <CTA t={t} />
 </main>

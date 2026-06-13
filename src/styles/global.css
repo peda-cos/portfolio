@@ -2,7 +2,7 @@
 
 /* ========================================
    Pedro Monteiro — Portfolio Landing Page
-   Style: Japandi (Japanese–Scandinavian)
+   Style: Flat Organic (SafetyWing-inspired)
    Fonts: DM Sans (ui) + Source Serif 4 (body)
    ======================================== */
 
@@ -54,16 +54,17 @@
     U+A720-A7FF;
 }
 
-/* ── Japandi Theme Tokens (@theme) ───── */
+/* ── Flat Organic Theme Tokens (@theme) ───── */
 
 @theme {
   /* Typography */
   --font-ui: 'DM Sans', system-ui, sans-serif;
   --font-body: 'Source Serif 4', Georgia, serif;
 
-  /* Japandi Color Palette
-     Warm off-white base → deep forest ink
-     with terracotta and moss accent warmth */
+  /* Flat Organic Color Palette
+     Warm off-white base + deep forest ink
+     with mint, sun, coral and sky accents
+     inspired by SafetyWing's friendly, blocky sections */
 
   /* Stone / parchment neutrals */
   --color-stone-50: oklch(98% 0.006 80);
@@ -97,6 +98,42 @@
   --color-clay-500: oklch(57% 0.12 44);
   --color-clay-600: oklch(47% 0.1 44);
 
+  /* Mint / teal (hero + primary organic accent) */
+  --color-mint-50: oklch(97% 0.02 175);
+  --color-mint-100: oklch(92% 0.04 175);
+  --color-mint-200: oklch(85% 0.07 175);
+  --color-mint-300: oklch(75% 0.1 175);
+  --color-mint-400: oklch(65% 0.12 175);
+  --color-mint-500: oklch(55% 0.11 175);
+  --color-mint-600: oklch(45% 0.09 175);
+  --color-mint-700: oklch(35% 0.07 175);
+  --color-mint-800: oklch(25% 0.05 175);
+  --color-mint-900: oklch(15% 0.03 175);
+
+  /* Sun / mustard (friendly highlights) */
+  --color-sun-100: oklch(94% 0.06 85);
+  --color-sun-200: oklch(88% 0.1 85);
+  --color-sun-300: oklch(80% 0.13 85);
+  --color-sun-400: oklch(70% 0.14 85);
+  --color-sun-500: oklch(60% 0.13 85);
+  --color-sun-600: oklch(50% 0.11 85);
+
+  /* Coral / salmon (education / craft warmth) */
+  --color-coral-100: oklch(93% 0.035 25);
+  --color-coral-200: oklch(86% 0.06 25);
+  --color-coral-300: oklch(77% 0.085 25);
+  --color-coral-400: oklch(67% 0.1 25);
+  --color-coral-500: oklch(57% 0.1 25);
+  --color-coral-600: oklch(47% 0.085 25);
+
+  /* Sky / soft blue (experience / trust) */
+  --color-sky-100: oklch(94% 0.025 235);
+  --color-sky-200: oklch(87% 0.05 235);
+  --color-sky-300: oklch(77% 0.075 235);
+  --color-sky-400: oklch(67% 0.095 235);
+  --color-sky-500: oklch(57% 0.1 235);
+  --color-sky-600: oklch(47% 0.085 235);
+
   /* Semantic tokens */
   --color-bg: var(--color-stone-50);
   --color-surface: oklch(99.5% 0.004 80);
@@ -111,7 +148,30 @@
   --color-border: var(--color-stone-200);
   --color-border-subtle: var(--color-stone-100);
 
-  /* Spacing — 8-pt scale, generous for Japandi breathing room */
+  /* Section backgrounds (flat organic contrast) */
+  --color-hero-bg: var(--color-mint-50);
+  --color-hero-text: var(--color-sage-900);
+  --color-hero-accent: var(--color-sage-600);
+  --color-value-bg: var(--color-stone-50);
+  --color-value-card-1: var(--color-mint-100);
+  --color-value-card-2: var(--color-sky-100);
+  --color-value-card-3: var(--color-sun-100);
+  --color-value-card-4: var(--color-coral-100);
+  --color-value-text: var(--color-sage-900);
+  --color-experience-bg: var(--color-sage-50);
+  --color-experience-card: var(--color-surface);
+  --color-experience-text: var(--color-sage-900);
+  --color-craft-bg: var(--color-stone-100);
+  --color-craft-card: var(--color-surface);
+  --color-craft-text: var(--color-sage-900);
+  --color-cta-bg: var(--color-sage-900);
+  --color-cta-text: var(--color-stone-50);
+  --color-cta-accent: var(--color-mint-300);
+  --color-footer-bg: var(--color-sage-900);
+  --color-footer-text: var(--color-stone-300);
+  --color-footer-link: var(--color-mint-200);
+
+  /* Spacing — 8-pt scale, generous organic breathing room */
   --spacing-1: 0.25rem; /*  4px */
   --spacing-2: 0.5rem; /*  8px */
   --spacing-3: 0.75rem; /* 12px */
@@ -198,8 +258,8 @@ a:hover {
 }
 
 ::selection {
-  background-color: var(--color-sage-200);
-  color: var(--color-sage-800);
+  background-color: var(--color-mint-200);
+  color: var(--color-sage-900);
 }
 
 /* ── Accessibility utilities ─────────── */
@@ -334,11 +394,27 @@ main:focus {
 
   /* Hover lift for cards */
   .card-lift {
-    transition: border-color var(--duration-base) var(--ease-gentle);
+    transition:
+      transform var(--duration-base) var(--ease-gentle),
+      box-shadow var(--duration-base) var(--ease-gentle);
   }
 
   .card-lift:hover {
-    border-color: var(--color-border);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px -8px oklch(20% 0.02 80 / 0.12);
+  }
+
+  /* Organic blob decoration */
+  .blob {
+    border-radius: 60% 40% 55% 45% / 55% 45% 60% 40%;
+  }
+
+  .blob-2 {
+    border-radius: 40% 60% 45% 55% / 55% 45% 60% 40%;
+  }
+
+  .blob-3 {
+    border-radius: 55% 45% 35% 65% / 45% 55% 65% 35%;
   }
 }
 

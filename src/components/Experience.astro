@@ -12,48 +12,78 @@ const { experience } = t;
 <section
   id="experience"
   aria-labelledby="experience-heading"
-  class="reveal py-20 px-6 max-w-[var(--width-content)] mx-auto"
+  class="bg-[var(--color-experience-bg)] text-[var(--color-experience-text)] reveal py-20 px-6"
 >
-  <p
-    class="font-[family-name:var(--font-ui)] text-xs font-medium tracking-[0.18em] uppercase text-[var(--color-accent)] mb-4 opacity-80"
-  >
-    {experience.eyebrow}
-  </p>
-  <h2
-    id="experience-heading"
-    class="font-[family-name:var(--font-ui)] text-2xl sm:text-3xl font-semibold text-[var(--color-text)] mb-12 tracking-tight"
-  >
-    {experience.heading}
-  </h2>
+  <div class="max-w-[var(--width-content)] mx-auto">
+    <p
+      class="font-[family-name:var(--font-ui)] text-xs font-semibold tracking-[0.18em] uppercase text-[var(--color-sage-500)] mb-4"
+    >
+      {experience.eyebrow}
+    </p>
+    <h2
+      id="experience-heading"
+      class="font-[family-name:var(--font-ui)] text-3xl sm:text-4xl font-bold text-[var(--color-sage-900)] mb-12 tracking-tight"
+    >
+      {experience.heading}
+    </h2>
 
-  <div class="space-y-10">
-    {
-      experience.positions.map((job) => (
-        <article class="group relative pl-5 border-l-2 border-[var(--color-border)] transition-colors duration-[var(--duration-base)] hover:border-[var(--color-accent)] motion-reduce:transition-none">
-          <div class="flex flex-wrap justify-between items-baseline gap-2 mb-1">
-            <h3 class="font-[family-name:var(--font-ui)] text-base font-semibold text-[var(--color-text)]">
-              {job.company}
-            </h3>
-            <span class="font-[family-name:var(--font-ui)] text-xs text-[var(--color-text-faint)] whitespace-nowrap">
-              {job.period}
-            </span>
-          </div>
-          <p class="font-[family-name:var(--font-ui)] text-sm font-medium text-[var(--color-text-muted)] mb-3">
-            {job.role}
-          </p>
-          <ul class="space-y-1.5 list-none p-0 m-0" role="list">
-            {job.highlights.map((item) => (
-              <li class="flex gap-2 font-[family-name:var(--font-body)] text-sm text-[var(--color-text-muted)] leading-relaxed">
+    <div class="space-y-8">
+      {
+        experience.positions.map((job, index) => (
+          <article class="card-lift relative pl-6 pr-6 py-6 rounded-[2rem] bg-[var(--color-experience-card)] border border-[var(--color-stone-200)] overflow-hidden">
+            <span
+              class="absolute left-0 top-6 bottom-6 w-1.5 rounded-full"
+              style={`background-color: ${index === 0 ? 'var(--color-sky-400)' : 'var(--color-mint-400)'}`}
+              aria-hidden="true"
+            />
+            <div class="flex flex-wrap justify-between items-baseline gap-2 mb-1">
+              <div class="flex items-center gap-3">
                 <span
-                  class="mt-1.5 shrink-0 w-1 h-1 rounded-full bg-[var(--color-accent)] opacity-60"
+                  class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-[var(--color-sage-200)] text-[var(--color-sage-700)]"
                   aria-hidden="true"
-                />
-                {item}
-              </li>
-            ))}
-          </ul>
-        </article>
-      ))
-    }
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M3 21h18" />
+                    <path d="M5 21V7l8-4 8 4v14" />
+                    <path d="M9 21v-6h6v6" />
+                  </svg>
+                </span>
+                <h3 class="font-[family-name:var(--font-ui)] text-lg font-bold text-[var(--color-sage-900)]">
+                  {job.company}
+                </h3>
+              </div>
+              <span class="inline-flex items-center px-3 py-1 rounded-full bg-[var(--color-sage-100)] font-[family-name:var(--font-ui)] text-xs font-medium text-[var(--color-sage-700)] whitespace-nowrap">
+                {job.period}
+              </span>
+            </div>
+            <p class="font-[family-name:var(--font-ui)] text-sm font-semibold text-[var(--color-text-muted)] mb-4">
+              {job.role}
+            </p>
+            <ul class="space-y-2 list-none p-0 m-0" role="list">
+              {job.highlights.map((item) => (
+                <li class="flex gap-3 font-[family-name:var(--font-body)] text-sm text-[var(--color-text-muted)] leading-relaxed">
+                  <span
+                    class="mt-1.5 shrink-0 w-2 h-2 rounded-full bg-[var(--color-sage-400)]"
+                    aria-hidden="true"
+                  />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
   </div>
 </section>

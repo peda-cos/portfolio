@@ -9,14 +9,14 @@ const { t } = Astro.props;
 const { footer, a11y } = t;
 ---
 
-<footer class="py-8 px-6 border-t border-[var(--color-border-subtle)] text-center">
-  <p class="font-[family-name:var(--font-ui)] text-xs text-[var(--color-text-faint)]">
+<footer class="bg-[var(--color-footer-bg)] text-[var(--color-footer-text)] py-10 px-6 text-center">
+  <p class="font-[family-name:var(--font-ui)] text-sm">
     {footer.builtWith}
     <a
       href="https://astro.build"
       target="_blank"
       rel="noopener noreferrer"
-      class="text-[var(--color-text-muted)] underline underline-offset-2 hover:text-[var(--color-accent)]"
+      class="text-[var(--color-footer-link)] underline underline-offset-2 hover:text-[var(--color-cta-accent)]"
       >Astro<span class="sr-only"> {a11y.opensInNewTab}</span></a
     >
     {footer.svelte}
@@ -24,7 +24,7 @@ const { footer, a11y } = t;
       href="https://svelte.dev"
       target="_blank"
       rel="noopener noreferrer"
-      class="text-[var(--color-text-muted)] underline underline-offset-2 hover:text-[var(--color-accent)]"
+      class="text-[var(--color-footer-link)] underline underline-offset-2 hover:text-[var(--color-cta-accent)]"
       >Svelte<span class="sr-only"> {a11y.opensInNewTab}</span></a
     >
     {footer.tailwind}
@@ -32,7 +32,7 @@ const { footer, a11y } = t;
       href="https://tailwindcss.com"
       target="_blank"
       rel="noopener noreferrer"
-      class="text-[var(--color-text-muted)] underline underline-offset-2 hover:text-[var(--color-accent)]"
+      class="text-[var(--color-footer-link)] underline underline-offset-2 hover:text-[var(--color-cta-accent)]"
       >Tailwind<span class="sr-only"> {a11y.opensInNewTab}</span></a
     >
     {footer.period}
