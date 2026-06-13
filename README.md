@@ -2,43 +2,42 @@ _This project was created by Pedro Monteiro_
 
 # Portfolio
 
-Personal portfolio and resume website for Pedro Monteiro, a Full-Stack Engineer based in São Paulo, Brazil. Hosted via GitHub Pages.
+Personal portfolio and resume website for Pedro Monteiro, a Full-Stack Engineer based in São Paulo, Brazil. Hosted on GitHub Pages.
 
 ## Description
 
-A statically generated, bilingual (Portuguese BR / English) resume site built with **Astro** and **Svelte**. The site serves as a single-page CV presenting professional experience, education, technical skills, and contact information.
+A static, bilingual (Portuguese BR / English) resume site built with plain **HTML**, **CSS**, and **JavaScript**. No frontend frameworks, no build step, and no external runtime dependencies — just static files served as-is. The only development dependencies are Playwright (for end-to-end tests) and `serve` (for local preview).
 
 ### Design Rationale
 
-- **Astro over Next.js / Gatsby**: Astro ships zero JavaScript by default — ideal for a content-driven resume page where interactivity is minimal. The only client-side component is the language switcher (Svelte island).
-- **Svelte over React**: The language switcher is the sole interactive element. Svelte compiles to vanilla JS with no runtime, keeping the bundle negligible compared to React's ~40 KB baseline.
-- **Static generation over SSR**: The content is author-controlled and changes infrequently. Static HTML delivers the fastest possible load, works without a server, and can be hosted on any CDN (GitHub Pages, Cloudflare Pages, Vercel, Netlify).
-- **i18n via file-based routing**: Astro's built-in `i18n` config handles locale routing (`/` for pt-br, `/en/` for English) with `prefixDefaultLocale: false`. Translations live in a single TypeScript module (`src/i18n/translations.ts`) — no runtime i18n library needed.
+- **Plain HTML/CSS/JS over frameworks**: The site is content-driven and has a single interactive concern (language switching). A framework runtime adds unnecessary bytes and complexity for this use case.
+- **No build step**: Files in `public/` are served directly. This eliminates build tooling, speeds up CI/CD, and makes the deployed output identical to the source.
+- **Self-hosted assets**: Fonts, favicon, and Open Graph image are stored locally under `public/assets/` so the site has no third-party requests.
+- **File-based i18n**: Two static HTML pages (`/` for pt-BR, `/en/` for English) share a single CSS and JS file.
 
 ### Architecture
 
 ```
-src/
-├── components/          # Svelte interactive components (LanguageSwitcher)
-├── i18n/
-│   ├── translations.ts  # All text content for both locales
-│   └── utils.ts         # Locale detection and translation helpers
-├── layouts/
-│   └── BaseLayout.astro # HTML shell: meta tags, SEO, fonts, JSON-LD
-├── pages/
-│   ├── index.astro      # Portuguese (default locale)
-│   └── en/index.astro   # English locale
-└── styles/
-    └── global.css       # Full stylesheet: sage green palette, responsive, print
+public/
+├── index.html          # Portuguese (default locale)
+├── en/
+│   └── index.html      # English locale
+├── assets/
+│   ├── css/
+│   │   └── main.css    # Site-wide stylesheet and design tokens
+│   ├── js/
+│   │   └── main.js     # Scroll-reveal observer
+│   └── fonts/          # Self-hosted subsetted WOFF2 fonts
+├── favicon.svg
+├── og-image.png
+└── robots.txt
 ```
-
-The content layer is fully data-driven — both page templates consume the same translation object, so adding or editing resume entries requires editing only `translations.ts`.
 
 ## Instructions
 
 ### Prerequisites
 
-- **Node.js** >= 18.x
+- **Node.js** >= 24.16.0 (only needed for Playwright E2E tests and local preview)
 - **npm** (bundled with Node.js)
 
 ### Install
@@ -47,52 +46,31 @@ The content layer is fully data-driven — both page templates consume the same 
 npm install
 ```
 
-### Development
+### Development / Preview
 
 ```bash
-npm run dev
+npm run dev      # → http://localhost:4321
+npm run preview  # → http://localhost:4321
 ```
 
-Opens a local dev server at `http://localhost:4321` with hot module replacement.
-
-### Build
+### E2E Tests
 
 ```bash
-npm run build
+npm run test:e2e
 ```
 
-Outputs static HTML/CSS/JS to `dist/`. All stylesheets are inlined (`build.inlineStylesheets: 'always'`).
+Playwright starts a local static server automatically and runs the test suite.
 
-### Preview
+## CI/CD
 
-```bash
-npm run preview
-```
-
-Serves the production build locally for final verification before deployment.
+- **CI** (`.github/workflows/ci.yml`): installs Playwright dependencies, caches browsers, and runs E2E tests on every push / pull request to `main`.
+- **Deploy** (`.github/workflows/deploy.yml`): uploads `public/` directly to GitHub Pages after CI succeeds on `main`, or on manual `workflow_dispatch`.
 
 ## Resources
 
-### Documentation
-
-- [Astro Documentation](https://docs.astro.build)
-- [Svelte 5 Documentation](https://svelte.dev/docs)
-- [Astro i18n Routing](https://docs.astro.build/en/guides/internationalization/)
-- [Astro Sitemap Integration](https://docs.astro.build/en/guides/integrations-guide/sitemap/)
-
-### References
-
-- [Schema.org Person markup](https://schema.org/Person) — used for JSON-LD structured data
-- [Open Graph Protocol](https://ogp.me/) — social sharing meta tags
-- [WCAG 2.1 AA](https://www.w3.org/TR/WCAG21/) — accessibility target (skip links, contrast, focus indicators)
-
-### AI Usage
-
-AI tools (GitHub Copilot, OpenCode) were used for:
-
-- Generating initial project scaffolding and boilerplate
-- Drafting and refining CSS styling
-- Writing this documentation (README.md, USER_DOC.md, DEV_DOC.md)
-- Code review assistance and translation proofreading
-
-All AI-generated output was reviewed and edited by the author.
+- [HTML: HyperText Markup Language](https://developer.mozilla.org/en-US/docs/Web/HTML)
+- [CSS: Cascading Style Sheets](https://developer.mozilla.org/en-US/docs/Web/CSS)
+- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [Open Graph Protocol](https://ogp.me/)
+- [Schema.org Person markup](https://schema.org/Person)
+- [WCAG 2.2 AA](https://www.w3.org/TR/WCAG22/)

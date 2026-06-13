@@ -36,9 +36,9 @@ const sharedTabOrder = [
   // Contact CTA
   '#contact a[href^="mailto:"]',
   // Footer credit links
-  'footer a[href*="astro.build"]',
-  'footer a[href*="svelte.dev"]',
-  'footer a[href*="tailwindcss.com"]',
+  'footer .footer-link-html',
+  'footer .footer-link-css',
+  'footer .footer-link-js',
 ];
 
 /**
@@ -109,7 +109,7 @@ test.describe('PT page (/portfolio/)', () => {
     const finalCta = page.locator('#contact a[href^="mailto:"]');
     await expect(finalCta).toBeVisible();
     await expect(finalCta).toHaveText('Enviar e-mail');
-    await expect(finalCta).toHaveClass(/btn-primary/);
+    await expect(finalCta).toHaveClass(/cta-section__action/);
   });
 
   test('hero CTA shows visible focus treatment when focused', async ({ page }) => {
@@ -200,7 +200,7 @@ test.describe('EN page (/portfolio/en/)', () => {
     const finalCta = page.locator('#contact a[href^="mailto:"]');
     await expect(finalCta).toBeVisible();
     await expect(finalCta).toHaveText('Send an email');
-    await expect(finalCta).toHaveClass(/btn-primary/);
+    await expect(finalCta).toHaveClass(/cta-section__action/);
   });
 
   test('hero CTA shows visible focus treatment when focused', async ({ page }) => {

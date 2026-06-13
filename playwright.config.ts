@@ -1,4 +1,4 @@
-import { defineConfig } from '@playwright/test';
+import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
   testDir: './e2e',
@@ -8,11 +8,15 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   reporter: 'html',
   use: {
-    baseURL: 'http://localhost:4321/portfolio/',
+    baseURL: 'http://localhost:4321/',
+    ...devices['Desktop Chrome'],
+    launchOptions: {
+      executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH,
+    },
   },
   webServer: {
-    command: 'npm run preview',
-    url: 'http://localhost:4321/portfolio/',
+    command: 'npx serve public -l 4321 --no-clipboard',
+    url: 'http://localhost:4321/',
     reuseExistingServer: !process.env.CI,
   },
 });
