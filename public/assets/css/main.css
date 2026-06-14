@@ -525,7 +525,7 @@ main:focus {
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 6rem;
+  height: 3.5rem;
   color: var(--shape-fill, transparent);
   pointer-events: none;
   line-height: 0;
