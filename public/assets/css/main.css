@@ -91,17 +91,17 @@
   --color-border: var(--color-green-200);
   --color-border-subtle: var(--color-green-100);
 
-  /* Section tokens — alternating between light and dark flat background colours for visible organic invasion */
+  /* Section tokens — alternating between the two flat background colors */
   --color-hero-bg: var(--color-green-50);
   --color-hero-text: var(--color-green-900);
   --color-hero-accent: var(--color-green-700);
-  --color-value-bg: var(--color-green-500);
+  --color-value-bg: var(--color-green-100);
   --color-value-card: var(--color-surface);
   --color-value-text: var(--color-green-900);
   --color-experience-bg: var(--color-green-50);
   --color-experience-card: var(--color-surface);
   --color-experience-text: var(--color-green-900);
-  --color-craft-bg: var(--color-green-500);
+  --color-craft-bg: var(--color-green-100);
   --color-craft-card: var(--color-surface);
   --color-craft-text: var(--color-green-900);
   --color-cta-bg: var(--color-green-50);
@@ -110,9 +110,9 @@
   --color-cta-accent-fg: var(--color-accent-fg);
   --color-cta-body: var(--color-green-700);
   --color-cta-email: var(--color-green-600);
-  --color-footer-bg: var(--color-green-500);
-  --color-footer-text: var(--color-stone-50);
-  --color-footer-link: var(--color-stone-100);
+  --color-footer-bg: var(--color-green-100);
+  --color-footer-text: var(--color-green-700);
+  --color-footer-link: var(--color-green-800);
 
   /* Spacing */
   --spacing-1: 0.25rem;
@@ -552,7 +552,7 @@ main:focus {
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--color-green-300);
+  color: var(--color-green-500);
   margin-bottom: var(--spacing-4);
 }
 
@@ -560,7 +560,7 @@ main:focus {
   font-family: var(--font-ui);
   font-size: 1.875rem;
   font-weight: 700;
-  color: var(--color-surface);
+  color: var(--color-green-900);
   margin-bottom: var(--spacing-4);
   letter-spacing: -0.025em;
 }
@@ -568,7 +568,7 @@ main:focus {
 .section__summary {
   font-family: var(--font-body);
   font-size: 1.125rem;
-  color: var(--color-stone-200);
+  color: var(--color-text-muted);
   margin-bottom: var(--spacing-12);
   max-width: 42rem;
   line-height: 1.625;
@@ -613,7 +613,7 @@ main:focus {
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 9999px;
-  background-color: var(--color-green-300);
+  background-color: var(--color-green-200);
   color: var(--color-green-900);
   flex-shrink: 0;
 }
@@ -624,7 +624,7 @@ main:focus {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-green-50);
+  color: var(--color-green-900);
 }
 
 .value-card__skills {
@@ -703,8 +703,8 @@ main:focus {
   width: 2.25rem;
   height: 2.25rem;
   border-radius: 9999px;
-  background-color: var(--color-green-300);
-  color: var(--color-green-900);
+  background-color: var(--color-green-200);
+  color: var(--color-green-700);
   flex-shrink: 0;
 }
 
@@ -811,8 +811,8 @@ main:focus {
   width: 2.25rem;
   height: 2.25rem;
   border-radius: 9999px;
-  background-color: var(--color-green-300);
-  color: var(--color-green-900);
+  background-color: var(--color-green-200);
+  color: var(--color-green-700);
   flex-shrink: 0;
 }
 
@@ -993,7 +993,7 @@ main:focus {
 }
 
 .site-footer a:hover {
-  color: var(--color-surface);
+  color: var(--color-cta-accent);
   opacity: 1;
 }
 
