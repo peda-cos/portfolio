@@ -91,17 +91,17 @@
   --color-border: var(--color-green-200);
   --color-border-subtle: var(--color-green-100);
 
-  /* Section tokens — organic progression from light green to dark green */
-  --color-hero-bg: var(--color-green-50);
+  /* Section tokens — two alternating neutral/soft-green backgrounds, dark CTA/footer kept for contrast */
+  --color-hero-bg: var(--color-stone-50);
   --color-hero-text: var(--color-green-900);
   --color-hero-accent: var(--color-green-700);
   --color-value-bg: var(--color-green-100);
   --color-value-card: var(--color-surface);
   --color-value-text: var(--color-green-900);
-  --color-experience-bg: var(--color-green-200);
+  --color-experience-bg: var(--color-stone-50);
   --color-experience-card: var(--color-surface);
   --color-experience-text: var(--color-green-900);
-  --color-craft-bg: var(--color-green-400);
+  --color-craft-bg: var(--color-green-100);
   --color-craft-card: var(--color-surface);
   --color-craft-text: var(--color-green-900);
   --color-cta-bg: var(--color-green-900);
@@ -382,31 +382,6 @@ main:focus {
   top: var(--spacing-6);
   right: var(--spacing-6);
   z-index: 10;
-}
-
-.hero__blob {
-  position: absolute;
-  border-radius: 60% 40% 55% 45% / 55% 45% 60% 40%;
-  pointer-events: none;
-}
-
-.hero__blob--light {
-  top: -6rem;
-  right: -6rem;
-  width: 28rem;
-  height: 28rem;
-  background-color: var(--color-green-200);
-  opacity: 0.4;
-}
-
-.hero__blob--dark {
-  top: 50%;
-  left: -8rem;
-  width: 20rem;
-  height: 20rem;
-  background-color: var(--color-green-300);
-  opacity: 0.25;
-  border-radius: 40% 60% 45% 55% / 55% 45% 60% 40%;
 }
 
 .hero__content {
@@ -924,28 +899,6 @@ main:focus {
   padding-block: 6rem;
   padding-inline: var(--spacing-6);
   text-align: center;
-}
-
-.cta-section__blob {
-  position: absolute;
-  width: 24rem;
-  height: 24rem;
-  border-radius: 60% 40% 55% 45% / 55% 45% 60% 40%;
-  pointer-events: none;
-  opacity: 0.1;
-}
-
-.cta-section__blob--light {
-  top: -5rem;
-  right: -5rem;
-  background-color: var(--color-green-500);
-}
-
-.cta-section__blob--dark {
-  bottom: -5rem;
-  left: -5rem;
-  background-color: var(--color-green-700);
-  border-radius: 55% 45% 35% 65% / 45% 55% 65% 35%;
 }
 
 .cta-section__content {
