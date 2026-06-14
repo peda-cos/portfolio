@@ -6,14 +6,14 @@ Personal portfolio and resume website for Pedro Monteiro, a Full-Stack Engineer 
 
 ## Description
 
-A static, bilingual (Portuguese BR / English) resume site built with plain **HTML**, **CSS**, and **JavaScript**. No frontend frameworks, no build step, and no external runtime dependencies — just static files served as-is. The only development dependencies are Playwright (for end-to-end tests) and `serve` (for local preview).
+A static, bilingual (Portuguese BR / English) resume site built with plain **HTML** and **CSS**. No frontend frameworks, no build step, and no external runtime dependencies — just static files served as-is. The only development dependencies are Playwright (for end-to-end tests) and `serve` (for local preview).
 
 ### Design Rationale
 
-- **Plain HTML/CSS/JS over frameworks**: The site is content-driven and has a single interactive concern (language switching). A framework runtime adds unnecessary bytes and complexity for this use case.
+- **Plain HTML/CSS over frameworks**: The site is content-driven and has a single navigational concern (language switching via a plain link). A framework runtime adds unnecessary bytes and complexity for this use case.
 - **No build step**: Files in `public/` are served directly. This eliminates build tooling, speeds up CI/CD, and makes the deployed output identical to the source.
 - **Self-hosted assets**: Fonts, favicon, and Open Graph image are stored locally under `public/assets/` so the site has no third-party requests.
-- **File-based i18n**: Two static HTML pages (`/` for pt-BR, `/en/` for English) share a single CSS and JS file.
+- **File-based i18n**: Two static HTML pages (`/` for pt-BR, `/en/` for English) share a single CSS file.
 
 ### Architecture
 
@@ -25,12 +25,11 @@ public/
 ├── assets/
 │   ├── css/
 │   │   └── main.css    # Site-wide stylesheet and design tokens
-│   ├── js/
-│   │   └── main.js     # Scroll-reveal observer
 │   └── fonts/          # Self-hosted subsetted WOFF2 fonts
 ├── favicon.svg
 ├── og-image.png
-└── robots.txt
+├── robots.txt
+└── sitemap.xml
 ```
 
 ## Instructions
@@ -70,7 +69,6 @@ Playwright starts a local static server automatically and runs the test suite.
 
 - [HTML: HyperText Markup Language](https://developer.mozilla.org/en-US/docs/Web/HTML)
 - [CSS: Cascading Style Sheets](https://developer.mozilla.org/en-US/docs/Web/CSS)
-- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 - [Open Graph Protocol](https://ogp.me/)
 - [Schema.org Person markup](https://schema.org/Person)
 - [WCAG 2.2 AA](https://www.w3.org/TR/WCAG22/)

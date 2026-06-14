@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import type { Page } from '@playwright/test';
 
 // Use relative paths (./ and ./en/) so Playwright correctly resolves them
 // against baseURL. Absolute paths (/ and /en/) would discard the baseURL
@@ -38,14 +39,13 @@ const sharedTabOrder = [
   // Footer credit links
   'footer .footer-link-html',
   'footer .footer-link-css',
-  'footer .footer-link-js',
 ];
 
 /**
  * Press Tab `count` times starting from the top of the page.
  * Focuses <html> first so Tab reliably begins from the first focusable element.
  */
-async function tabThrough(page: import('@playwright/test').Page, count: number) {
+async function tabThrough(page: Page, count: number) {
   await page.evaluate(() => (document.documentElement as HTMLElement).focus());
   for (let i = 0; i < count; i++) {
     await page.keyboard.press('Tab');
@@ -55,7 +55,7 @@ async function tabThrough(page: import('@playwright/test').Page, count: number) 
 /**
  * Press Tab once from the current focused position (no reset).
  */
-async function tabOnce(page: import('@playwright/test').Page) {
+async function tabOnce(page: Page) {
   await page.keyboard.press('Tab');
 }
 
