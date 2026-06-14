@@ -23,3 +23,6 @@ test-results/
 
 # planning documents (local only)
 .planning/
+
+# pi agent local knowledge base
+.pi/
