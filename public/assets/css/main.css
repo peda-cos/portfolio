@@ -91,25 +91,25 @@
   --color-border: var(--color-green-200);
   --color-border-subtle: var(--color-green-100);
 
-  /* Section tokens — two alternating neutral/soft-green backgrounds, dark CTA/footer kept for contrast */
+  /* Section tokens — vertical gradient from light (top) to the main darker green (CTA/footer) */
   --color-hero-bg: var(--color-stone-50);
   --color-hero-text: var(--color-green-900);
   --color-hero-accent: var(--color-green-700);
-  --color-value-bg: var(--color-green-100);
+  --color-value-bg: var(--color-green-50);
   --color-value-card: var(--color-surface);
   --color-value-text: var(--color-green-900);
-  --color-experience-bg: var(--color-stone-50);
+  --color-experience-bg: var(--color-green-100);
   --color-experience-card: var(--color-surface);
   --color-experience-text: var(--color-green-900);
-  --color-craft-bg: var(--color-green-100);
+  --color-craft-bg: var(--color-green-200);
   --color-craft-card: var(--color-surface);
   --color-craft-text: var(--color-green-900);
-  --color-cta-bg: var(--color-green-900);
+  --color-cta-bg: var(--color-green-500);
   --color-cta-text: var(--color-stone-50);
-  --color-cta-accent: var(--color-green-300);
-  --color-footer-bg: var(--color-green-100);
-  --color-footer-text: var(--color-green-700);
-  --color-footer-link: var(--color-green-600);
+  --color-cta-accent: var(--color-stone-50);
+  --color-footer-bg: var(--color-green-500);
+  --color-footer-text: var(--color-stone-100);
+  --color-footer-link: var(--color-stone-200);
 
   /* Spacing */
   --spacing-1: 0.25rem;
