@@ -107,9 +107,9 @@
   --color-cta-bg: var(--color-green-900);
   --color-cta-text: var(--color-stone-50);
   --color-cta-accent: var(--color-green-300);
-  --color-footer-bg: var(--color-green-900);
-  --color-footer-text: var(--color-stone-300);
-  --color-footer-link: var(--color-green-200);
+  --color-footer-bg: var(--color-green-100);
+  --color-footer-text: var(--color-green-700);
+  --color-footer-link: var(--color-green-600);
 
   /* Spacing */
   --spacing-1: 0.25rem;
