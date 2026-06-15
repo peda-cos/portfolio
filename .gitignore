@@ -1,3 +1,7 @@
+# generated html pages
+public/index.html
+public/en/index.html
+
 # dependencies
 node_modules/
 

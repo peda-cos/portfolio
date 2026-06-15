@@ -48,8 +48,11 @@ jobs:
         if: steps.playwright-cache.outputs.cache-hit == 'true'
         run: npx playwright install-deps chromium
 
+      - name: Build static pages
+        run: npm run build
+
       - name: E2E tests
-        run: npm run test:e2e
+        run: npx playwright test
 
       - name: Upload Playwright report on failure
         if: failure()

@@ -15,7 +15,7 @@ export default defineConfig({
     },
   },
   webServer: {
-    command: 'npx serve public -l 4321 --no-clipboard',
+    command: 'npm run dev',
     url: 'http://localhost:4321/',
     reuseExistingServer: !process.env.CI,
   },
