@@ -1,26 +1,12 @@
 import { test, expect } from '@playwright/test';
 import type { Page } from '@playwright/test';
 
-// Use relative paths (./ and ./en/) so Playwright correctly resolves them
-// against baseURL. Absolute paths (/ and /en/) would discard the baseURL
-// path component (/portfolio/) and hit the server root, returning 404.
-
-// ── Keyboard-navigation helpers ───────────────────────────────────────────────
-
-/**
- * Expected sequential tab order for shared interactive controls.
- * Each entry is a CSS selector for the focusable element.
- */
 const sharedTabOrder = [
-  // Skip link
   '.skip-link',
-  // Language switcher
   '.hero__language',
-  // Hero CTA and social links
   '#hero a[href^="mailto:"]',
   '#hero a[href*="linkedin"]',
   '#hero a[href*="github"]',
-  // Education highlight links (#craft section – same URLs in both locales)
   'a[href="https://github.com/peda-cos/libft"]',
   'a[href="https://github.com/peda-cos/ft_printf"]',
   'a[href="https://github.com/peda-cos/get_next_line"]',
@@ -34,9 +20,7 @@ const sharedTabOrder = [
   'a[href="https://github.com/peda-cos/NetPractice"]',
   'a[href="https://github.com/peda-cos/CPP_Modules"]',
   'a[href="https://github.com/peda-cos/Inception"]',
-  // Contact CTA
   '#contact a[href^="mailto:"]',
-  // Footer credit links
   'footer .footer-link-html',
   'footer .footer-link-css',
 ];
@@ -52,15 +36,13 @@ async function tabOnce(page: Page) {
   await page.keyboard.press('Tab');
 }
 
-// ── Locale matrix ────────────────────────────────────────────────────────────
-
 const locales = [
   {
     name: 'PT',
     path: './',
     lang: 'pt-BR',
     switchHref: 'en/',
-    switchLabel: /Switch to/i,
+    switchLabel: /Mudar para/i,
     heroCtaText: 'Entrar em contato',
     finalCtaText: 'Enviar e-mail',
   },
@@ -110,20 +92,20 @@ for (const locale of locales) {
       await expect(page.locator('html')).toHaveAttribute('lang', expectedLang);
     });
 
-    test('hero CTA renders with localized label and btn-primary class', async ({ page }) => {
+    test('hero CTA renders with localized label and primary button class', async ({ page }) => {
       await page.goto(locale.path);
       const heroCta = page.locator('#hero a[href^="mailto:"]');
       await expect(heroCta).toBeVisible();
       await expect(heroCta).toHaveText(locale.heroCtaText);
-      await expect(heroCta).toHaveClass(/btn-primary/);
+      await expect(heroCta).toHaveClass(/btn--solid/);
     });
 
-    test('final CTA renders with localized label and cta-section__action class', async ({ page }) => {
+    test('final CTA renders with localized label and deep-band button class', async ({ page }) => {
       await page.goto(locale.path);
       const finalCta = page.locator('#contact a[href^="mailto:"]');
       await expect(finalCta).toBeVisible();
       await expect(finalCta).toHaveText(locale.finalCtaText);
-      await expect(finalCta).toHaveClass(/cta-section__action/);
+      await expect(finalCta).toHaveClass(/btn--on-deep/);
     });
 
     test('hero CTA shows visible focus treatment when focused', async ({ page }) => {

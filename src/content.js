@@ -1,6 +1,3 @@
-// Content for the bilingual portfolio pages.
-// This is the single source of truth for both locales.
-
 const pt = {
   lang: 'pt-BR',
   basePath: '',
@@ -18,14 +15,13 @@ const pt = {
   skipLink: 'Ir para o conteúdo principal',
   language: {
     href: 'en/',
-    label: 'Switch to English',
+    label: 'Mudar para a versão em inglês',
     text: 'English',
   },
 
   hero: {
-    eyebrow: 'Engenheiro de software',
     name: 'Pedro Monteiro',
-    tagline: 'Construo produtos do início ao fim.',
+    tagline: 'Engenheiro full-stack. Construo produtos do início ao fim.',
     summary:
       'Da arquitetura ao deploy: full-stack, orientado a produto e comprometido com código bem feito.',
     cta: 'Entrar em contato',
@@ -37,7 +33,6 @@ const pt = {
   },
 
   value: {
-    eyebrow: 'O que eu faço',
     heading: 'Tecnologia que serve ao produto',
     summary:
       'Tenho experiência em todo o ciclo de vida de aplicações, da modelagem de dados e APIs ao frontend e à infraestrutura. Gosto de ter responsabilidade real: entender o problema, iterar rapidamente e entregar algo que funciona.',
@@ -60,13 +55,12 @@ const pt = {
       {
         icon: 'users',
         title: 'Forma de trabalhar',
-        skills: ['Code review', 'Async', 'Cross-funcional'],
+        skills: ['Code review', 'Trabalho assíncrono', 'Colaboração cross-funcional'],
       },
     ],
   },
 
   experience: {
-    eyebrow: 'Experiência',
     heading: 'Onde já atuei',
     jobs: [
       {
@@ -94,7 +88,6 @@ const pt = {
   },
 
   craft: {
-    eyebrow: 'Formação',
     heading: 'Como me tornei quem sou',
     summary:
       'Aprendo melhor construindo coisas reais e recebendo feedback de colegas. A 42 me ensinou a depurar problemas complexos e a UNINOVE me deu a base teórica formal. Os dois juntos moldam a forma como penso sobre software.',
@@ -132,10 +125,9 @@ const pt = {
   },
 
   contact: {
-    eyebrow: 'Vamos conversar',
     heading: 'Disponível para novas oportunidades',
     body:
-      'Se você está construindo algo interessante e precisa de alguém que entregue de verdade. Mande uma mensagem.',
+      'Se você está construindo algo interessante e precisa de alguém que entregue de verdade, mande uma mensagem.',
     cta: 'Enviar e-mail',
     email: 'pedrocsmonteiro@gmail.com',
   },
@@ -168,11 +160,9 @@ const en = {
     label: 'Switch to Português',
     text: 'Português',
   },
-
   hero: {
-    eyebrow: 'Software engineer',
     name: pt.hero.name,
-    tagline: 'I build products end to end.',
+    tagline: 'Full-stack engineer. I build products end to end.',
     summary:
       'From architecture to deployment: full-stack, product-oriented, and focused on well-crafted code.',
     cta: 'Get in touch',
@@ -184,7 +174,6 @@ const en = {
   },
 
   value: {
-    eyebrow: 'What I do',
     heading: 'Technology that serves the product',
     summary:
       'I have experience across the full application lifecycle, from data modelling and APIs to frontend and infrastructure. I like real ownership: understand the problem, iterate quickly, and ship something that works.',
@@ -207,13 +196,12 @@ const en = {
       {
         icon: 'users',
         title: 'Ways of working',
-        skills: ['Code review', 'Async', 'Cross-functional'],
+        skills: ['Code review', 'Asynchronous teamwork', 'Cross-functional collaboration'],
       },
     ],
   },
 
   experience: {
-    eyebrow: 'Experience',
     heading: 'Where I have worked',
     jobs: [
       {
@@ -241,7 +229,6 @@ const en = {
   },
 
   craft: {
-    eyebrow: 'Education',
     heading: 'How I got here',
     summary:
       'I learn best by building real things and getting feedback from peers. 42 taught me to debug complex problems and UNINOVE gave me the formal foundation. Both together shape how I think about software.',
@@ -265,10 +252,9 @@ const en = {
   },
 
   contact: {
-    eyebrow: "Let's talk",
     heading: 'Open to new opportunities',
     body:
-      "If you're building something interesting and need someone who genuinely delivers. Reach out.",
+      "If you're building something interesting and need someone who genuinely delivers, reach out.",
     cta: 'Send an email',
     email: 'pedrocsmonteiro@gmail.com',
   },
